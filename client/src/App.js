@@ -7,9 +7,8 @@ import Auth from "./utils/auth.js";
 
 import "./App.css"
 
-const Protected = () => <h3>Protected Content</h3>;
 
-const PlaceHolder = () => <div></div>;
+const Protected = () => <h3>Protected Content</h3>;
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
