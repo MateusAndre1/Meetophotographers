@@ -4,7 +4,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Auth from "./utils/auth.js";
-import FightPage from "./pages/FightPage"
 
 import "./App.css"
 
@@ -63,13 +62,11 @@ class App extends Component {
                   {this.state.authenticated ? (
                     <div>
                       <li><Link to="/public">Home</Link></li>
-                      <li><Link to="/fight">Fight</Link></li>
                       <li><Link to="/protected">Protected Content</Link></li>
                     </div>
                   ) : (
                       <div>
                         <li><Link to="/public">Home</Link></li>
-                        <li><Link to="/fight">Fight</Link></li>
                         <li><Link to="/login">Login Here</Link></li>
                         <li><Link to="/signup">SignUp Here</Link></li>
                         <li><Link to="/protected">Protected Content</Link></li>
@@ -86,18 +83,10 @@ class App extends Component {
             </div>
           </nav>
           <div>
-            <Route
-              path='/fight'
-              render={(props) => <FightPage {...props}
-                questionnumber={this.state.mainquestionnumber}
-                changeQuestion={this.quest}
-              />}
-            />
             <Route path="/public" component={Home} />
             <Route path="/login" component={Login} />
             <Route path='/signup' component={Signup} />
             <ProtectedRoute path='/protected' component={Protected} />
-            <ProtectedRoute path="/fight" component={PlaceHolder} />
           </div>
         </div>
       </BrowserRouter>
