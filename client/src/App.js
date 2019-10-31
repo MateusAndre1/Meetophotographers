@@ -78,7 +78,7 @@ class App extends Component {
                 </ul>
               </div>
               <div className="col-md-4 text-center">
-                {(sessionStorage.getItem("token") ? <div>Welcome back, {JSON.parse(sessionStorage.getItem("token")).email}</div> : <div></div>)}
+                {(sessionStorage.getItem("token") ? <div>Welcome back, {JSON.parse(sessionStorage.getItem("token")).firstname}</div> : <div></div>)}
               </div>
               <div className="col-md-4 text-right">
                 <AuthButton />
