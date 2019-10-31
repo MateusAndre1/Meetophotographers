@@ -9,8 +9,6 @@ import "./App.css"
 
 const Protected = () => <h3>Protected Content</h3>;
 
-const PlaceHolder = () => <div></div>;
-
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     Auth.isUserAuthenticated() === true
