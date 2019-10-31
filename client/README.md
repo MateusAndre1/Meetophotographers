@@ -342,7 +342,7 @@ npm install --save react-router
 Alternatively you may use `yarn`:
 
 ```sh
-npm install react-router
+yarn add react-router
 ```
 
 This works for any library, not just `react-router`.
@@ -997,7 +997,7 @@ This shouldn’t affect you when developing on `localhost`, but if you develop r
 To work around it, you can specify your public development host in a file called `.env.development` in the root of your project:
 
 ```
-HOST=mypublicdevhost.com
+HOST=myPublicDevHost.com
 ```
 
 If you restart the development server now and load the app from the specified host, it should work.
@@ -1718,7 +1718,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -1740,8 +1740,8 @@ This is because when there is a fresh page load for a `/todos/42`, the server lo
 ```diff
  app.use(express.static(path.join(__dirname, 'build')));
 
--app.get('/', function(req, res) {
-+app.get('/*', function(req, res) {
+-app.get('/', function (req, res) {
++app.get('/*', function (req, res) {
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
  });
 ```
