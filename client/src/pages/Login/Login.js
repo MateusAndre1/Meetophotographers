@@ -21,7 +21,7 @@ class Login extends React.Component {
     isAuthenticated(auth) {
         if (auth.status === 200) {
             sessionStorage.setItem('token', auth.config.data);
-            window.location.replace("/protected");
+            window.location.href = "/members";
         }
     }
 
@@ -35,9 +35,9 @@ class Login extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.password && this.state.email) {
-            API.getUser({
+            API.loggedIn({
                 email: this.state.email,
-                password: this.state.password,
+                password: this.state.password
             })
                 .then(res => this.isAuthenticated(res))
                 .catch(err => console.log(err));

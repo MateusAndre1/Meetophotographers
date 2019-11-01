@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Redirect, withRouter, Link } from "react-router-d
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import Member from "./pages/Member";
 import Auth from "./utils/auth.js";
 
 import "./App.css"
 
 
-const Protected = () => <h3>Protected Content</h3>;
+const Members = () => <h3>Members Content</h3>;
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -46,10 +47,6 @@ class App extends Component {
     });
   }
 
-  quest = (number) => {
-    this.setState({ mainquestionnumber: number + 1 });
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -61,20 +58,20 @@ class App extends Component {
                   {this.state.authenticated ? (
                     <div>
                       <li><Link to="/public">Home</Link></li>
-                      <li><Link to="/protected">Protected Content</Link></li>
+                      <li><Link to="/members">Members Content</Link></li>
                     </div>
                   ) : (
                       <div>
                         <li><Link to="/public">Home</Link></li>
                         <li><Link to="/login">Login Here</Link></li>
                         <li><Link to="/signup">SignUp Here</Link></li>
-                        <li><Link to="/protected">Protected Content</Link></li>
+                        <li><Link to="/members">Members Content</Link></li>
                       </div>
                     )}
                 </ul>
               </div>
               <div className="col-md-4 text-center">
-                {(sessionStorage.getItem("token") ? <div>Welcome back, {JSON.parse(sessionStorage.getItem("token")).firstname}</div> : <div></div>)}
+                {(sessionStorage.getItem("token") ? <Member /> : <div></div>)}
               </div>
               <div className="col-md-4 text-right">
                 <AuthButton />
@@ -85,7 +82,7 @@ class App extends Component {
             <Route path="/public" component={Home} />
             <Route path="/login" component={Login} />
             <Route path='/signup' component={Signup} />
-            <ProtectedRoute path='/protected' component={Protected} />
+            <ProtectedRoute path='/members' component={Members} />
           </div>
         </div>
       </BrowserRouter>

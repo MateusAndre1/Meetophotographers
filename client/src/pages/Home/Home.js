@@ -47,7 +47,7 @@ class Home extends React.Component {
                         <h1>HOOOOMMMMMEEEE</h1>
                     </div>
                     {Auth.isUserAuthenticated() ? (
-                        <div>Lofggeed In</div>
+                        <div>Logged in</div>
                     ) : (
                         <div>Not Logged in</div>
                     )}

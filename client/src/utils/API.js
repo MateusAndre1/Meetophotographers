@@ -4,11 +4,10 @@ export default {
   saveUser: function(userData) {
     return axios.post("/api/signup", userData);
   },
-  getUser: function(userData) {
+  loggedIn: function(userData) {
     return axios.post("/api/login", userData)
   },
-  getQuestions: function(category){
-    console.log(category)
-    return axios.get("https://opentdb.com/api.php?amount=20&category="+category+"&type=boolean")
+  firstName: function(userData) {
+    return axios.post("/api/user_data", userData.firstname)
   }
 };
