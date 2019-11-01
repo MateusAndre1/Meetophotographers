@@ -21,7 +21,7 @@ class Login extends React.Component {
     isAuthenticated(auth) {
         if (auth.status === 200) {
             sessionStorage.setItem('token', auth.config.data);
-            window.location.href = "/protected";
+            window.location.replace("/protected");
         }
     }
 
