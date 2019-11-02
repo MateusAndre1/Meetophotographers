@@ -37,7 +37,7 @@ class Photographer extends React.Component {
         API.saveGrapher({
             specialty: this.state.specialty
         })
-            .then(window.location.href = "/members")
+            .then(() => {window.location.href = "/members"; return false})
             .catch(err => console.log(err));
     };
 
