@@ -93,7 +93,7 @@ class Signup extends Component {
                             <button
                                 onClick={this.handleFormSubmit}
                                 className="btn btn-primary"
-                                disabled={!(this.state.email && this.state.password && this.state.firstName && this.state.lastName && this.state.userType)}>Sign Up</button>
+                                disabled={!(this.state.email && this.state.password && this.state.firstName && this.state.lastName && this.state.userType)} type="reset">Sign Up</button>
                         </form>
 
                         <br />
