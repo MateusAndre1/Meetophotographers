@@ -35,7 +35,7 @@ class Login extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.password && this.state.email) {
-            API.loggedIn({
+            API.getUser({
                 email: this.state.email,
                 password: this.state.password
             })
