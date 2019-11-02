@@ -75,9 +75,9 @@ class App extends Component {
           <div>
             <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/login" component={Login} />
-            <Route path='/signup' component={Signup} />
-            <ProtectedRoute path='/members' component={Member} />
+            <Route path="/login" component={Login} exact />
+            <Route path='/signup' component={Signup} exact />
+            <ProtectedRoute path='/members' component={Member} exact />
             <Route render={() => <Redirect to="/"/>} />
             </Switch>
           </div>
