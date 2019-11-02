@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect, withRouter, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, withRouter, Link, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Member from "./pages/Member";
+import User from "./pages/User";
+import Photographer from "./pages/Photographer";
 import Auth from "./utils/auth.js";
 
 import "./App.css"
 
-
-const Members = () => <h3>Members Content</h3>;
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -27,7 +27,7 @@ const AuthButton = withRouter(({ history }) => (
     <p>
       <button onClick={() => {
         Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
-      }}>Sign out</button>
+      }} className="btn btn-danger">Sign out</button>
     </p>
   ) : (
       <p>You are not logged in.</p>
@@ -37,8 +37,7 @@ const AuthButton = withRouter(({ history }) => (
 class App extends Component {
 
   state = {
-    authenticated: false,
-    mainquestionnumber: 0
+    authenticated: false
   }
 
   componentDidMount() {
@@ -57,12 +56,12 @@ class App extends Component {
                 <ul>
                   {this.state.authenticated ? (
                     <div>
-                      <li><Link to="/public">Home</Link></li>
+                      <li><Link to="/">Home</Link></li>
                       <li><Link to="/members">Members Content</Link></li>
                     </div>
                   ) : (
                       <div>
-                        <li><Link to="/public">Home</Link></li>
+                        <li><Link to="/">Home</Link></li>
                         <li><Link to="/login">Login Here</Link></li>
                         <li><Link to="/signup">SignUp Here</Link></li>
                         <li><Link to="/members">Members Content</Link></li>
@@ -70,19 +69,21 @@ class App extends Component {
                     )}
                 </ul>
               </div>
-              <div className="col-md-4 text-center">
-                {(sessionStorage.getItem("token") ? <Member /> : <div></div>)}
-              </div>
               <div className="col-md-4 text-right">
                 <AuthButton />
               </div>
             </div>
           </nav>
           <div>
-            <Route path="/public" component={Home} />
+            <Switch>
+            <Route path="/" component={Home} exact />
             <Route path="/login" component={Login} />
             <Route path='/signup' component={Signup} />
-            <ProtectedRoute path='/members' component={Members} />
+            <ProtectedRoute path='/members' component={Member} />
+            <ProtectedRoute path='/user' component={User} />
+            <ProtectedRoute path='/photographer' component={Photographer} />
+            <Route render={() => <Redirect to="/"/>} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>
