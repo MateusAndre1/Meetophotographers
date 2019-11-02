@@ -37,7 +37,7 @@ class Photographer extends React.Component {
         API.saveGrapher({
             specialty: this.state.specialty
         })
-            .then(() => {window.location.href = "/members"; return false})
+            .then(() => {window.location.replace("/members");})
             .catch(err => console.log(err));
     };
 
@@ -60,7 +60,7 @@ class Photographer extends React.Component {
                             <button
                                 onClick={this.handleFormSubmit}
                                 className="btn btn-primary"
-                                disabled={!(this.state.specialty)}>Add</button>
+                                disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
                     </div>
                 </div>

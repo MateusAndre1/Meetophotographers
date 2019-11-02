@@ -20,8 +20,7 @@ class Signup extends Component {
     isAuthenticated(auth) {
         if (auth.status === 200) {
             sessionStorage.setItem('token', auth.config.data);
-            window.location.href = "/members";
-            return false;
+            window.location.replace("/members");
         }
     }
 
