@@ -1,4 +1,5 @@
 import React from "react";
+import API from "../../utils/API";
 
 class Customer extends React.Component {
     constructor(props) {
@@ -11,15 +12,11 @@ class Customer extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/user_data")
-            .then(res => {
-                return res.json();
-            }).then(data => {
-                
-                this.setState({
-                    firstName: data.firstName
-                })
-            });
+        API.grabUser(this.state.firstName).then((res) => {
+            this.setState({
+                firstName: res.data.firstName
+            })
+        })
     }
 
     render() {

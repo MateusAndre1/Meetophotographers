@@ -13,16 +13,11 @@ class Photographer extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/user_data")
-            .then(res => {
-                return res.json();
-            }).then(data => {
-                
-                this.setState({
-                    firstName: data.firstName
-                })
-            });
-
+        API.grabUser(this.state.firstName).then((res) => {
+            this.setState({
+                firstName: res.data.firstName
+            })
+        })
     }
 
     handleInputChange = event => {
@@ -37,7 +32,7 @@ class Photographer extends React.Component {
         API.saveGrapher({
             specialty: this.state.specialty
         })
-            .then(() => {window.location.href = "/members";})
+            .then(() => { window.location.href = "/members"; })
             .catch(err => console.log(err));
     };
 

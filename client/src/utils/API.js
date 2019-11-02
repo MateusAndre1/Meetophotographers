@@ -4,7 +4,7 @@ export default {
   saveUser: function(userData) {
     return axios.post("/api/signup", userData);
   },
-  loggedIn: function(userData) {
+  getUser: function(userData) {
     return axios.post("/api/login", userData)
   },
   saveGrapher: function(userData) {
@@ -12,5 +12,8 @@ export default {
   },
   saveCustomer: function(userData) {
     return axios.post("/api/customers", userData)
+  },
+  grabUser: function(userData) {
+    return axios.get("/api/user_data", userData)
   }
 };

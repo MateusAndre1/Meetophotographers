@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Photographer from "../Photographer";
 import Customer from "../Customer";
 
+
 class Member extends Component {
     constructor(props) {
         super(props);
