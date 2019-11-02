@@ -5,7 +5,8 @@ class Member extends React.Component {
         super(props);
 
         this.state = {
-            firstname: ""
+            firstName: "",
+            userType: ""
         };
     }
 
@@ -16,7 +17,8 @@ class Member extends React.Component {
             return res.json();
         }).then(data => {
             this.setState({
-                firstname: data.firstname
+                firstName: data.firstName,
+                userType: data.userType
             })
         });
     }
@@ -25,7 +27,16 @@ class Member extends React.Component {
     render() {
         return (
             <div className="container">
-                Welcome sir {this.state.firstname}
+                {this.state.userType ? (
+                    <div>
+                      User {this.state.firstName}
+                    </div>
+                  ) : (
+                      <div>
+                        Photographer {this.state.firstName}
+                      </div>
+                    )}
+                
             </div>
         )
     }

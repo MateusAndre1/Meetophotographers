@@ -20,8 +20,9 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      userType: req.body.userType
     }).then(function() {
       res.redirect(307, "/api/login");
     }).catch(function(err) {
@@ -48,7 +49,8 @@ module.exports = function(app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        firstname: req.user.firstname
+        firstName: req.user.firstName,
+        userType: req.user.userType
       });
     }
   });

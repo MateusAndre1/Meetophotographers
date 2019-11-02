@@ -5,11 +5,11 @@ var bcrypt = require("bcrypt-nodejs");
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     //First name and last name
-    firstname:{
+    firstName:{
       type: DataTypes.STRING,
       allowNull: false
     },
-    lastname:{
+    lastName:{
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -24,6 +24,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     // The password cannot be null
     password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    userType: {
       type: DataTypes.STRING,
       allowNull: false
     }

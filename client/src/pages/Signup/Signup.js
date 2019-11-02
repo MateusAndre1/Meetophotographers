@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { InputElement } from "../../components/InputElement/InputElement";
+import { DropdownInput } from "../../components/DropdownInput/DropdownInput";
 import API from "../../utils/API";
 
 class Signup extends Component {
@@ -7,8 +8,9 @@ class Signup extends Component {
         authenticated: false,
         email: "",
         password: "",
-        firstname: "",
-        lastname: ""
+        firstName: "",
+        lastName: "",
+        userType: ""
     };
 
     componentDidMount() {
@@ -35,11 +37,12 @@ class Signup extends Component {
             API.saveUser({
                 email: this.state.email,
                 password: this.state.password,
-                firstname: this.state.firstname,
-                lastname: this.state.lastname
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                userType: this.state.userType
             })
-            .then(res => this.isAuthenticated(res))
-            .catch(err => console.log(err));
+                .then(res => this.isAuthenticated(res))
+                .catch(err => console.log(err));
         }
     };
 
@@ -52,16 +55,16 @@ class Signup extends Component {
 
                         <form className="login">
                             <InputElement
-                                value={this.state.firstname}
+                                value={this.state.firstName}
                                 onChange={this.handleInputChange}
-                                name="firstname"
+                                name="firstName"
                                 placeholder="Enter your First Name"
                                 label="First Name"
                                 type="text" />
                             <InputElement
-                                value={this.state.lastname}
+                                value={this.state.lastName}
                                 onChange={this.handleInputChange}
-                                name="lastname"
+                                name="lastName"
                                 placeholder="Enter Your Last Name"
                                 label="Last Name"
                                 type="text" />
@@ -79,10 +82,17 @@ class Signup extends Component {
                                 placeholder="Enter Password"
                                 label="Password"
                                 type="password" />
+                            <DropdownInput
+                                value={this.state.userType}
+                                onChange={this.handleInputChange}
+                                name="userType"
+                                placeholder="User or Photographer"
+                                label="type"
+                                type="text" />
                             <button
                                 onClick={this.handleFormSubmit}
-                                className="btn btn-default"
-                                disabled={!(this.state.email && this.state.password)}>Sign Up</button>
+                                className="btn btn-primary"
+                                disabled={!(this.state.email && this.state.password && this.state.firstName && this.state.lastName && this.state.userType)}>Sign Up</button>
                         </form>
 
                         <br />
