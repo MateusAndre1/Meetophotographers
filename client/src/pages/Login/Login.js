@@ -22,7 +22,6 @@ class Login extends React.Component {
         if (auth.status === 200) {
             sessionStorage.setItem('token', auth.config.data);
             window.location.href = "/members";
-            return Location.reload();
         }
     }
 
