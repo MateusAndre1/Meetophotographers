@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Member from "./pages/Member";
+import User from "./pages/User";
+import Photographer from "./pages/Photographer";
 import Auth from "./utils/auth.js";
 
 import "./App.css"
@@ -67,9 +69,6 @@ class App extends Component {
                     )}
                 </ul>
               </div>
-              <div className="col-md-4 text-center">
-                {(sessionStorage.getItem("token") ? <Member /> : <div></div>)}
-              </div>
               <div className="col-md-4 text-right">
                 <AuthButton />
               </div>
@@ -81,6 +80,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path='/signup' component={Signup} />
             <ProtectedRoute path='/members' component={Member} />
+            <ProtectedRoute path='/user' component={User} />
+            <ProtectedRoute path='/photographer' component={Photographer} />
             <Route render={() => <Redirect to="/"/>} />
             </Switch>
           </div>

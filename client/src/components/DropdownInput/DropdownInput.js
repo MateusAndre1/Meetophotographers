@@ -8,7 +8,7 @@ export const DropdownInput = props => (
             </div>
             <select className="custom-select" id="inputGroupSelect01" onChange={props.onChange} type={props.type} name={props.name}>
                 <option selected>Choose..</option>
-                <option value="User">User</option>
+                <option value="Customer">Customer</option>
                 <option value="Photographer">Photographer</option>
             </select>
         </div>

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
+import Photographer from "../Photographer";
+import Customer from "../Customer";
 
-class Member extends React.Component {
+class Member extends Component {
     constructor(props) {
         super(props);
 
@@ -14,36 +16,30 @@ class Member extends React.Component {
 
     componentDidMount() {
         fetch("/api/user_data")
-        .then(res => {
-            return res.json();
-        }).then(data => {
-            if (data.userType === "User") {
+            .then(res => {
+                return res.json();
+            }).then(data => {
+                if (data.userType === "Customer") {
+                    this.setState({
+                        isUser: true
+                    })
+                }
                 this.setState({
-                    isUser: true
+                    firstName: data.firstName,
+                    userType: data.userType,
                 })
-            }
-            this.setState({
-                firstName: data.firstName,
-                userType: data.userType,
-            })
-        });
-        
-    }
+            });
 
+    }
 
     render() {
         return (
             <div className="container">
                 {this.state.isUser ? (
-                    <div>
-                      User {this.state.firstName}
-                    </div>
-                  ) : (
-                      <div>
-                        Photographer {this.state.firstName}
-                      </div>
+                    <Customer />
+                ) : (
+                        <Photographer />
                     )}
-                
             </div>
         )
     }

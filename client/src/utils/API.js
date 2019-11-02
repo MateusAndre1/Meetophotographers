@@ -7,7 +7,10 @@ export default {
   loggedIn: function(userData) {
     return axios.post("/api/login", userData)
   },
-  firstName: function(userData) {
-    return axios.post("/api/user_data", userData.firstname)
+  saveGrapher: function(userData) {
+    return axios.post("/api/photographers", userData)
+  },
+  saveCustomer: function(userData) {
+    return axios.post("/api/customers", userData)
   }
 };
