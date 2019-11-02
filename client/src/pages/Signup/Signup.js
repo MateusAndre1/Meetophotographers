@@ -87,7 +87,7 @@ class Signup extends Component {
                                 onChange={this.handleInputChange}
                                 name="userType"
                                 placeholder="User or Photographer"
-                                label="type"
+                                label="User or Photographer"
                                 type="text" />
                             <button
                                 onClick={this.handleFormSubmit}

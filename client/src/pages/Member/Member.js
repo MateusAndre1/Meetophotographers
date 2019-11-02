@@ -6,7 +6,8 @@ class Member extends React.Component {
 
         this.state = {
             firstName: "",
-            userType: ""
+            userType: "",
+            isUser: false
         };
     }
 
@@ -16,18 +17,24 @@ class Member extends React.Component {
         .then(res => {
             return res.json();
         }).then(data => {
+            if (data.userType === "User") {
+                this.setState({
+                    isUser: true
+                })
+            }
             this.setState({
                 firstName: data.firstName,
-                userType: data.userType
+                userType: data.userType,
             })
         });
+        
     }
 
 
     render() {
         return (
             <div className="container">
-                {this.state.userType ? (
+                {this.state.isUser ? (
                     <div>
                       User {this.state.firstName}
                     </div>
