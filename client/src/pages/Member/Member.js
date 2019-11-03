@@ -15,7 +15,12 @@ class Member extends Component {
     }
 
     async componentDidMount() {
-        const response = await fetch("/api/user_data");
+        const response = await fetch("/api/user_data", {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
         const json = await response.json();
         if (json.userType === "Customer") {
             this.setState({
