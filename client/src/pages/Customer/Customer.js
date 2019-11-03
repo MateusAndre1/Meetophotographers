@@ -11,7 +11,12 @@ class Customer extends React.Component {
     }
 
     async componentDidMount() {
-        const response = await fetch("/api/user_data");
+        const response = await fetch("/api/user_data", {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
         const json = await response.json();
         this.setState({
             firstName: json.firstName
