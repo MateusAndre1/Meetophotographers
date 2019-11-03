@@ -13,8 +13,7 @@ export default {
   saveCustomer: function(userData) {
     return axios.post("/api/customers", userData)
   },
-  grabUser: function(userData) {
-    console.log(userData);
-    return axios.get("/api/user_data")
+  grabUser: function() {
+    return axios.get("/api/user_data");
   }
 };

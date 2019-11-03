@@ -27,7 +27,8 @@ class Member extends Component {
                 userType: res.data.userType
             })
         })
-    }
+        .catch(err => this.setState({ error: err.message}));
+    };
 
     render() {
         return (
