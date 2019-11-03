@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Photographer from "../Photographer";
 import Customer from "../Customer";
+import API from "../../utils/API";
 
 class Member extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLoaded: false,
             firstName: "",
             userType: "",
             isUser: false
@@ -15,21 +15,20 @@ class Member extends Component {
     }
 
     async componentDidMount() {
-        const response = await fetch("/api/user_data", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+        API.grabUser()
+        .then(res => {
+            console.log(res);
+            if(res.data.userType === "Customer"){
+                this.setState({
+                    isUser: true
+                })
             }
-        });
-        const json = await response.json();
-        if (json.userType === "Customer") {
             this.setState({
-                isUser: true
+                firstName: res.data.firstName
             })
-        }
-        this.setState({
-            firstName: json.firstName,
-            userType: json.userType
+        })
+        .catch(err => {
+            console.log(err);
         })
     };
 
