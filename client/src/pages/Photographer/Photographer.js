@@ -13,15 +13,16 @@ class Photographer extends React.Component {
     }
 
     async componentDidMount() {
-        const response = await fetch("/api/user_data", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        });
-        const json = await response.json();
-        this.setState({
-            firstName: json.firstName
+        API.grabUser()
+        .then(res => {
+            console.log(res);
+            
+            this.setState({
+                firstName: res.data.firstName
+            })
+        })
+        .catch(err => {
+            console.log(err);
         })
     }
 
