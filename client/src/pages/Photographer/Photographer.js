@@ -13,12 +13,9 @@ class Photographer extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/user_data")
-        .then(res => res.json())
-        .then((result) => {
+        API.grabUser(this.state.firstName).then((res) => {
             this.setState({
-                isLoaded: true,
-                firstName: result.firstName
+                firstName: res.data.firstName
             })
         })
     }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Photographer from "../Photographer";
 import Customer from "../Customer";
-
+import API from "../../utils/API";
 
 class Member extends Component {
     constructor(props) {
@@ -16,18 +16,15 @@ class Member extends Component {
     }
 
     componentDidMount() {
-        fetch("/api/user_data")
-        .then(res => res.json())
-        .then((result) => {
-            if (result.userType === "Customer") {
+        API.grabUser(this.state.firstName, this.state.userType).then((res) => {
+            if (res.data.userType === "Customer") {
                 this.setState({
                     isUser: true
                 })
             }
             this.setState({
-                isLoaded: true,
-                firstName: result.firstName,
-                userType: result.userType
+                firstName: res.data.firstName,
+                userType: res.data.userType
             })
         })
     };
