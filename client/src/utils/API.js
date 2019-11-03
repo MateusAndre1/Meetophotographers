@@ -14,6 +14,6 @@ export default {
     return axios.post("/api/customers", userData)
   },
   grabUser: function() {
-    return axios.get("/api/user_data");
+    return axios.post("/api/user_data");
   }
 };
