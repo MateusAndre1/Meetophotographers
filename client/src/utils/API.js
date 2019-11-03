@@ -14,7 +14,7 @@ export default {
     return axios.post("/api/customers", userData)
   },
   grabUser: function(data) {
-    console.log(data + "-----?????????");
+    // console.log(data + "-----?????????");
     return axios.get("/api/user_data");
   }
 };
