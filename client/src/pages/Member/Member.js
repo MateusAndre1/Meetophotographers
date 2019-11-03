@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Photographer from "../Photographer";
 import Customer from "../Customer";
-import API from "../../utils/API";
 
 class Member extends Component {
     constructor(props) {
@@ -15,17 +14,17 @@ class Member extends Component {
         };
     }
 
-    componentDidMount() {
-        API.grabUser(this.state.firstName, this.state.userType).then((res) => {
-            if (res.data.userType === "Customer") {
-                this.setState({
-                    isUser: true
-                })
-            }
+    async componentDidMount() {
+        const response = await fetch("/api/user_data");
+        const json = await response.json();
+        if (json.userType === "Customer") {
             this.setState({
-                firstName: res.data.firstName,
-                userType: res.data.userType
+                isUser: true
             })
+        }
+        this.setState({
+            firstName: json.firstName,
+            userType: json.userType
         })
     };
 

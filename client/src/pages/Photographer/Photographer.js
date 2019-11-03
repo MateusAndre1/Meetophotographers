@@ -12,11 +12,11 @@ class Photographer extends React.Component {
         };
     }
 
-    componentDidMount() {
-        API.grabUser(this.state.firstName).then((res) => {
-            this.setState({
-                firstName: res.data.firstName
-            })
+    async componentDidMount() {
+        const response = await fetch("/api/user_data");
+        const json = await response.json();
+        this.setState({
+            firstName: json.firstName
         })
     }
 
