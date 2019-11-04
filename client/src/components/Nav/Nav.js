@@ -1,13 +1,56 @@
-import React from "react";
+import React, { Component } from 'react'
+import { withRouter, Link} from "react-router-dom";
+import Auth from "../../utils/auth.js";
 
-const Nav = props => (
-  <nav className="navbar navbar-default">
-    <div className="container-fluid">
-      <div className="navbar-header">
-      {props.whoSignedIn ? (<div>Welcome back, {props.whoSignedIn}</div>) : (<div></div>)}
-      </div>
-    </div>
-  </nav>
-);
+const AuthButton = withRouter(({ history }) => (
+  Auth.isUserAuthenticated() ? (
+    <p>
+      <button onClick={() => {
+        Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
+      }} className="btn btn-danger">Sign out</button>
+    </p>
+  ) : (
+      <p>You are not logged in.</p>
+    )
+));
 
-export default Nav;
+export default class Nav extends Component {
+  state = {
+    authenticated: false
+  }
+
+  componentDidMount() {
+    this.setState({ authenticated: Auth.isUserAuthenticated() }, function () {
+      console.log(this.state.authenticated)
+    });
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="col-md-4">
+            <ul>
+              {this.state.authenticated ? (
+                <div>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/members">Members Content</Link></li>
+                </div>
+              ) : (
+                  <div>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/login">Login Here</Link></li>
+                    <li><Link to="/signup">SignUp Here</Link></li>
+                    <li><Link to="/members">Members Content</Link></li>
+                  </div>
+                )}
+            </ul>
+          </div>
+          <div className="col-md-4 text-right">
+            <AuthButton />
+          </div>
+        </div>
+      </nav>
+    )
+  }
+}

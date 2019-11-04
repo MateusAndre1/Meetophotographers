@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect, withRouter, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Member from "./pages/Member";
 import Auth from "./utils/auth.js";
+import Nav from "./components/Nav"
 
 import "./App.css"
 
@@ -20,17 +21,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   )} />
 );
 
-const AuthButton = withRouter(({ history }) => (
-  Auth.isUserAuthenticated() ? (
-    <p>
-      <button onClick={() => {
-        Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
-      }} className="btn btn-danger">Sign out</button>
-    </p>
-  ) : (
-      <p>You are not logged in.</p>
-    )
-));
+
 
 class App extends Component {
 
@@ -48,37 +39,14 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <nav className="navbar navbar-default">
-            <div className="container-fluid">
-              <div className="col-md-4">
-                <ul>
-                  {this.state.authenticated ? (
-                    <div>
-                      <li><Link to="/">Home</Link></li>
-                      <li><Link to="/members">Members Content</Link></li>
-                    </div>
-                  ) : (
-                      <div>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/login">Login Here</Link></li>
-                        <li><Link to="/signup">SignUp Here</Link></li>
-                        <li><Link to="/members">Members Content</Link></li>
-                      </div>
-                    )}
-                </ul>
-              </div>
-              <div className="col-md-4 text-right">
-                <AuthButton />
-              </div>
-            </div>
-          </nav>
+          <Nav />
           <div>
             <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/login" component={Login} exact />
-            <Route path='/signup' component={Signup} exact />
-            <ProtectedRoute path='/members' component={Member} exact />
-            <Route render={() => <Redirect to="/"/>} />
+              <Route path="/" component={Home} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path='/signup' component={Signup} exact />
+              <ProtectedRoute path='/members' component={Member} exact />
+              <Route render={() => <Redirect to="/" />} />
             </Switch>
           </div>
         </div>
