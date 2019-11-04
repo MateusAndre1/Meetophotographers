@@ -44,7 +44,7 @@ class Home extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <h1>HOOOOMMMMMEEEE</h1>
+                        <h1>Meetographer</h1>
                     </div>
                     {Auth.isUserAuthenticated() ? (
                         <div>Logged in</div>
