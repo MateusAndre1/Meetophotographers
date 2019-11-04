@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement/InputElement";
+import Upload from "../../components/Upload"
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -65,6 +66,8 @@ class Photographer extends React.Component {
                         </form>
                     </div>
                 </div>
+                <Upload />
+
             </div>
         )
     }
