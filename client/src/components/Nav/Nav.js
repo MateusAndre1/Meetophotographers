@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Link} from "react-router-dom";
 import Auth from "../../utils/auth.js";
+import "./Nav.css"
 
 const AuthButton = withRouter(({ history }) => (
   Auth.isUserAuthenticated() ? (
