@@ -2,29 +2,23 @@ import React from 'react';
 import API from "../../utils/API.js"
  
 class Uploader extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
+    state = {
             selectedFile: null
         };
-    }
+    
 
     fileSelectedHandler = e => {
         console.log(e.target.files[0]);
         
         this.setState({
-            selectedFile: e.target
+            selectedFile: e.target.files[0]
         })
         
     }
 
     fileUploadHandler = () => {
-        
-        API.saveImage({
-            profileImage: this.state.selectedFile
-        })
-        .then((res) => {console.log(res)});
+        API.saveImage({binImage: this.state.selectedFile})
+        .then((res) => {console.log(res)}).then(() => window.location.reload())
         
 
     }
@@ -33,8 +27,8 @@ class Uploader extends React.Component {
     render() {
         return (
             <>
-            <input type="file" onChange={this.fileSelectedHandler}/>
-            <button onClick={this.fileUploadHandler}>Upload</button>
+            <input type="file" name="binImage" onChange={this.fileSelectedHandler}/>
+            <button type="submit" onClick={this.fileUploadHandler}>Upload</button>
             </>
         );
     }

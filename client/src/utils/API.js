@@ -17,6 +17,7 @@ export default {
     return axios.post("/api/user_data");
   },
   saveImage: function (userData) {
+    
     return axios.post("/api/images", userData);
   }
 };

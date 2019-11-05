@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, new Date().toISOString() + file.originalname)
   }
 });
 
@@ -23,7 +23,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5
+    fileSize: 1024 * 1024 * 100
   },
   fileFiler: fileFilter
 });
@@ -97,12 +97,13 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/api/images", upload.single("profileImage"), (req, res) => {
+  app.post("/api/images", upload.single("binImage"), (req, res) => {
 
     console.log(req.file);
     db.Image.create({
-      firstName: req.body.firstName,
-      imageName: req.body.imageName
+      firstName: req.user.firstName,
+      profileImage: req.body.profileImage,
+      binImage: req.file.path
     }).then(function (data) {
       return res.json(data);
     }).catch(function (error) {

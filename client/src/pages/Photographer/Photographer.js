@@ -56,7 +56,7 @@ class Photographer extends React.Component {
                     <div className="col-md-6 col-md-offset-3">
                         <h2>What is your Specialty</h2>
 
-                        <form action="/api/photographers" method="post" encType="multipart/form-data">
+                        <form>
                             <InputElement
                                 value={this.state.specialty}
                                 onChange={this.handleInputChange}
@@ -69,9 +69,9 @@ class Photographer extends React.Component {
                                 className="btn btn-primary"
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
-                       
+                        <form action="/api/images" method="get" encType="multipart/form-data">
                         <Uploader />
-                       
+                        </form>
                     </div>
                 </div>
                 
