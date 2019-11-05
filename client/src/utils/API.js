@@ -19,5 +19,8 @@ export default {
   saveImage: function (userData) {
     
     return axios.post("/api/images", userData);
+  },
+  grabImage: function(userData) {
+    return axios.post("/api/profile-image", userData);
   }
 };

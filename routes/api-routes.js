@@ -29,7 +29,7 @@ const upload = multer({
 });
 
 module.exports = function (app) {
-  
+
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -107,6 +107,23 @@ module.exports = function (app) {
       UserId: req.user.id
     }).then(function () {
       return res.redirect("/members")
+    }).catch(function (error) {
+      console.log(error);
+    });
+  });
+
+  app.post("/api/profile-image", function (req, res) {
+
+    // console.log(req.body);
+
+    db.Image.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function (data) {
+      // console.log(data);
+
+      return res.json(data);
     }).catch(function (error) {
       console.log(error);
     });
