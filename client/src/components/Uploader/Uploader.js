@@ -17,12 +17,14 @@ class Uploader extends React.Component {
         
     }
 
-    fileUploadHandler = () => {
-        API.saveImage({
-            binImage: this.state.selectedFile,
-            profileImage: this.state.selectedFile.name
+    fileUploadHandler = (event) => {
+        event.preventDefault();
+        API.saveImage({})
+        .then((res) => {
+            console.log(res)
+            window.location.href = "/"
         })
-        .then((res) => {console.log(res)})
+        // .then(() => {return window.history.back()})
     }
    
  
@@ -30,7 +32,7 @@ class Uploader extends React.Component {
         return (
             <>
             <input type="file" name="binImage" onChange={this.fileSelectedHandler}/>
-            <button type="submit" onClick={this.fileUploadHandler}>Upload</button>
+            <button onSubmit={this.fileUploadHandler}>Upload</button>
             </>
         );
     }
