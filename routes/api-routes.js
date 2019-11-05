@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads/");
+    cb(null, "./client/public/assets/images");
   },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString() + file.originalname)
@@ -102,10 +102,11 @@ module.exports = function (app) {
     console.log(req.file);
     db.Image.create({
       firstName: req.user.firstName,
-      profileImage: req.body.profileImage,
-      binImage: req.file.path
+      profileImage: req.file.originalname,
+      binImage: req.file.path,
+      UserId: req.user.id
     }).then(function (data) {
-      return res.json(data);
+      return res.json(data)
     }).catch(function (error) {
       console.log(error);
     });

@@ -69,7 +69,7 @@ class Photographer extends React.Component {
                                 className="btn btn-primary"
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
-                        <form action="/api/images" method="get" encType="multipart/form-data">
+                        <form action="/api/images" method="post" encType="multipart/form-data">
                         <Uploader />
                         </form>
                     </div>

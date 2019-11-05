@@ -5,7 +5,8 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     },
     specialty: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
   Photographer.associate = function (models) {

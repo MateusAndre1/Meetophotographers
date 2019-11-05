@@ -3,7 +3,8 @@ import API from "../../utils/API.js"
  
 class Uploader extends React.Component {
     state = {
-            selectedFile: null
+            selectedFile: null,
+            profileImage: ""
         };
     
 
@@ -17,10 +18,11 @@ class Uploader extends React.Component {
     }
 
     fileUploadHandler = () => {
-        API.saveImage({binImage: this.state.selectedFile})
-        .then((res) => {console.log(res)}).then(() => window.location.reload())
-        
-
+        API.saveImage({
+            binImage: this.state.selectedFile,
+            profileImage: this.state.selectedFile.name
+        })
+        .then((res) => {console.log(res)})
     }
    
  
