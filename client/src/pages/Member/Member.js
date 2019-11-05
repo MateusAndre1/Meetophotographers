@@ -17,7 +17,7 @@ class Member extends Component {
     async componentDidMount() {
         API.grabUser()
         .then(res => {
-            console.log(res);
+            // console.log(res);
             if(res.data.userType === "Customer"){
                 this.setState({
                     isUser: true

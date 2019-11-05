@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement/InputElement";
-import Upload from "../../components/Upload"
+import Uploader from "../../components/Uploader"
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -9,23 +9,24 @@ class Photographer extends React.Component {
 
         this.state = {
             firstName: "",
-            specialty: ""
+            specialty: "",
+            profileImage: ""
         };
     }
 
     async componentDidMount() {
         API.grabUser()
-        .then(res => {
-            console.log(res);
-            
-            this.setState({
-                firstName: res.data.firstName
+            .then(res => {
+                // console.log(res);
+                this.setState({
+                    firstName: res.data.firstName
+                })
             })
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .catch(err => {
+                console.log(err);
+            })
     }
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -34,12 +35,16 @@ class Photographer extends React.Component {
         });
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
+
+    handleFormSubmit = e => {
+        e.preventDefault();
         API.saveGrapher({
             specialty: this.state.specialty
         })
-            .then(() => { window.location.href = "/members"; })
+            .then((res) => {
+                console.log(res);
+                return window.location.href = "/members";
+            })
             .catch(err => console.log(err));
     };
 
@@ -51,7 +56,7 @@ class Photographer extends React.Component {
                     <div className="col-md-6 col-md-offset-3">
                         <h2>What is your Specialty</h2>
 
-                        <form>
+                        <form action="/api/photographers" method="post" encType="multipart/form-data">
                             <InputElement
                                 value={this.state.specialty}
                                 onChange={this.handleInputChange}
@@ -64,10 +69,12 @@ class Photographer extends React.Component {
                                 className="btn btn-primary"
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
+                       
+                        <Uploader />
+                       
                     </div>
                 </div>
-                <Upload />
-
+                
             </div>
         )
     }
