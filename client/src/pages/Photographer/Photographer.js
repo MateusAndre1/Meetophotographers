@@ -10,7 +10,8 @@ class Photographer extends React.Component {
         this.state = {
             firstName: "",
             specialty: "",
-            profileImage: ""
+            profileImage: "",
+            image: ""
         };
     }
 
@@ -25,8 +26,19 @@ class Photographer extends React.Component {
             .catch(err => {
                 console.log(err);
             })
+            this.loadImage();
     }
-
+    loadImage = () => {
+        API.grabImage({})
+          .then(res =>{
+              console.log(res.data[0].binImage);
+              
+              this.setState({
+              image: res.data[0].binImage
+            })
+        })
+          .catch(err => console.log(err));
+      };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -74,7 +86,8 @@ class Photographer extends React.Component {
                         </form>
                     </div>
                 </div>
-                
+                <div><img src="../../../assets/images/2019-11-05T16:22:31.916Z178663.jpg" width="300px" height="300px" alt="profilepic"/></div>
+
             </div>
         )
     }

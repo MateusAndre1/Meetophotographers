@@ -9,10 +9,10 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false
       },
       binImage: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull: false
       }
-    });
+    }); 
     Image.associate = function (models) {
       Image.belongsTo(models.User, {
         foreignKey: {
