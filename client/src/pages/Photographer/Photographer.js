@@ -87,7 +87,6 @@ class Photographer extends React.Component {
                     </div>
                 </div>
                 <div><img src="../../../assets/images/2019-11-05T16:22:31.916Z178663.jpg" width="300px" height="300px" alt="profilepic"/></div>
-
             </div>
         )
     }
