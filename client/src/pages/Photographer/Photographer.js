@@ -11,7 +11,8 @@ class Photographer extends React.Component {
             firstName: "",
             specialty: "",
             profileImage: "",
-            image: ""
+            image: "",
+            UserId: ""
         };
     }
 
@@ -20,8 +21,11 @@ class Photographer extends React.Component {
             .then(res => {
                 // console.log(res);
                 this.setState({
-                    firstName: res.data.firstName
+                    firstName: res.data.firstName,
+                    UserId: res.data.UserId
                 })
+                console.log(res);
+                
             })
             .catch(err => {
                 console.log(err);
@@ -85,7 +89,7 @@ class Photographer extends React.Component {
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
                         <form action="/api/images" method="post" encType="multipart/form-data">
-                        <Uploader />
+                        <Uploader userId={this.state.UserId}/>
                         </form>
                     </div>
                 </div>

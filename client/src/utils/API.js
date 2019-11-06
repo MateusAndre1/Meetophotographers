@@ -17,6 +17,7 @@ export default {
     return axios.post("/api/user_data");
   },
   saveImage: function (userData) {
+    console.log(userData + "userdata logs from API");
     
     return axios.post("/api/images", userData);
   },
