@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import Auth from "../../utils/auth";
+import Jumbotron from "../../components/Jumbotron"
 
 class Home extends React.Component {
     state = {
@@ -41,18 +42,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <h1>Meetographer</h1>
-                    </div>
-                    {Auth.isUserAuthenticated() ? (
-                        <div>Logged in</div>
-                    ) : (
-                        <div>Not Logged in</div>
-                    )}
-                </div>
-            </div>
+            <>
+            <Jumbotron />
+            </>
         )
     }
 }
