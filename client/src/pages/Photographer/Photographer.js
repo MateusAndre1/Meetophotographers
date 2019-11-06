@@ -32,9 +32,12 @@ class Photographer extends React.Component {
         API.grabImage({})
           .then(res =>{
               console.log(res.data[0].binImage);
-              
+              let result = res.data[3].binImage;
+              let newString = result.split("/");
+              let newer2 = `../../../${newString[2]}/${newString[3]}/${newString[4]}`
+
               this.setState({
-              image: res.data[0].binImage
+              image: newer2
             })
         })
           .catch(err => console.log(err));
@@ -86,7 +89,9 @@ class Photographer extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div><img src="../../../assets/images/2019-11-05T16:22:31.916Z178663.jpg" width="300px" height="300px" alt="profilepic"/></div>
+                <div>
+                    <img src={this.state.image} width="300px" height="300px" alt="profilepic"/>
+                </div>
             </div>
         )
     }
