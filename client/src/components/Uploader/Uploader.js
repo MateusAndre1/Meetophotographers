@@ -8,7 +8,7 @@ class Uploader extends React.Component {
         this.state = {
             selectedFile: null,
             profileImage: "",
-            UserId: ""
+            id: ""
         };
     }
 
