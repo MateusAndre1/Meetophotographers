@@ -23,12 +23,12 @@ class Uploader extends React.Component {
 
     fileUploadHandler = (event) => {
         event.preventDefault();
-        console.log("UserId has props question mark?" + this.props.UserId);
-        if (!process.env.NODE_ENV) {
-            API.saveImage({ UserId: this.state.UserId })
+        console.log("UserId has props question mark?" + this.props.id);
+        console.log("is this ENV??? " + process.env.NODE_ENV);
+        if (!process.env.NODE_ENV === "production") {
+            API.saveImage({ UserId: this.state.id })
                 .then((res) => {
                     console.log(res)
-                    window.location.href = "/"
                 })
         } else {
             //to do uplaod to firebase
