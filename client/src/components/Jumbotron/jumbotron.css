@@ -1,3 +1,9 @@
-.containerOne {
-    background-image: url(../../assets/images/cameraImage.jpg);
+.homej {
+    
+    background-image: url(https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    object-fit: scale-down;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }

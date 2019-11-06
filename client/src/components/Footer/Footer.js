@@ -5,11 +5,11 @@ export default class Footer extends Component {
         return (
             <div>
 
-                <footer class="page-footer font-small blue fixed-bottom">
+                <footer className="page-footer font-small blue fixed-bottom">
 
 
-                    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://meetographer.com/"> meetographer.com</a>
+                    <div className="footer-copyright text-center py-3">© 2019 Copyright:
+                    <a href="https://meetographer.com/"> meetographer.com</a>
                     </div>
 
 

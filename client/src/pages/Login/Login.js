@@ -2,6 +2,7 @@ import React from "react";
 import { InputElement } from "../../components/InputElement/InputElement";
 import API from "../../utils/API";
 
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -77,6 +78,7 @@ class Login extends React.Component {
                     </div>
                 </div>
             </div>
+            
         )
     }
 }

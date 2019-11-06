@@ -28,7 +28,7 @@ export default class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default aqua-gradient">
         <div className="container-fluid">
           <div className="col-md-4">
             <ul>

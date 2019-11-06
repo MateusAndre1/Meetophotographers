@@ -5,7 +5,8 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Member from "./pages/Member";
 import Auth from "./utils/auth.js";
-import Nav from "./components/Nav"
+import Nav from "./components/Nav";
+
 
 import "./App.css"
 
@@ -50,6 +51,7 @@ class App extends Component {
             </Switch>
           </div>
         </div>
+        
       </BrowserRouter>
     );
   }
