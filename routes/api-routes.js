@@ -105,8 +105,6 @@ module.exports = function (app) {
       profileImage: req.file.originalname,
       binImage: req.file.path,
       UserId: req.user.id
-    }).then(function () {
-      return res.redirect("/members")
     }).catch(function (error) {
       console.log(error);
     });
