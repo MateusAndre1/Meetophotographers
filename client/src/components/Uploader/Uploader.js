@@ -1,38 +1,48 @@
 import React from 'react';
 import API from "../../utils/API.js"
- 
+
 class Uploader extends React.Component {
-    state = {
+    constructor(props) {
+        super(props);
+
+        this.state = {
             selectedFile: null,
-            profileImage: ""
+            profileImage: "",
+            UserId: ""
         };
-    
+    }
 
     fileSelectedHandler = e => {
         console.log(e.target.files[0]);
-        
+
         this.setState({
             selectedFile: e.target.files[0]
         })
-        
+
     }
 
     fileUploadHandler = (event) => {
         event.preventDefault();
-        API.saveImage({})
-        .then((res) => {
-            console.log(res)
-            window.location.href = "/"
-        })
-        // .then(() => {return window.history.back()})
+        console.log("UserId has props question mark?" + this.props.UserId);
+        if (!process.env.NODE_ENV) {
+            API.saveImage({ UserId: this.state.UserId })
+                .then((res) => {
+                    console.log(res)
+                    window.location.href = "/"
+                })
+        } else {
+            //to do uplaod to firebase
+            alert("STOP THAT!!!!")
+        }
+       
     }
-   
- 
+
+
     render() {
         return (
             <>
-            <input type="file" name="binImage" onChange={this.fileSelectedHandler}/>
-            <button onSubmit={this.fileUploadHandler}>Upload</button>
+                <input type="file" name="binImage" onChange={this.fileSelectedHandler} />
+                <button onSubmit={this.fileUploadHandler}>Upload</button>
             </>
         );
     }
