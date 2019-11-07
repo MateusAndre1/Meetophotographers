@@ -5,7 +5,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./client/public/assets/images");
+    cb(null, "./client/src/assets/images");
   },
   filename: function (req, file, cb) {
     cb(null, new Date().toISOString() + file.originalname)
@@ -105,6 +105,9 @@ module.exports = function (app) {
       profileImage: req.file.originalname,
       binImage: req.file.path,
       UserId: req.user.id
+    }).then(function () {
+      return res.redirect("/members");
+      
     }).catch(function (error) {
       console.log(error);
     });

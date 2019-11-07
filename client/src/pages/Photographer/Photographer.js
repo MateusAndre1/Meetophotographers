@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement/InputElement";
-import Uploader from "../../components/Uploader"
+import NewUploader from "../../components/NewUploader"
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -21,31 +21,15 @@ class Photographer extends React.Component {
             .then(res => {
                 // console.log(res);
                 this.setState({
-                    firstName: res.data.firstName,
-                    UserId: res.data.UserId
+                    firstName: res.data.firstName
                 })
-                console.log(res);
+                // console.log(res);
                 
             })
             .catch(err => {
                 console.log(err);
             })
-            this.loadImage();
     }
-    loadImage = () => {
-        API.grabImage({})
-          .then(res =>{
-              console.log(res.data[0].binImage);
-              let result = res.data[3].binImage;
-              let newString = result.split("/");
-              let newer2 = `../../../${newString[2]}/${newString[3]}/${newString[4]}`
-
-              this.setState({
-              image: newer2
-            })
-        })
-          .catch(err => console.log(err));
-      };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -61,7 +45,6 @@ class Photographer extends React.Component {
             specialty: this.state.specialty
         })
             .then((res) => {
-                console.log(res);
                 return window.location.href = "/members";
             })
             .catch(err => console.log(err));
@@ -88,13 +71,13 @@ class Photographer extends React.Component {
                                 className="btn btn-primary"
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
-                        <form action="/api/images" method="post" encType="multipart/form-data">
-                        <Uploader userId={this.state.UserId}/>
-                        </form>
+                        
+                        <NewUploader />
+                        
                     </div>
                 </div>
                 <div>
-                    <img src={this.state.image} width="300px" height="300px" alt="profilepic"/>
+                    
                 </div>
             </div>
         )
