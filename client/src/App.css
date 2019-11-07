@@ -1,7 +1,7 @@
 body {
-    background-image: url("https://i.pinimg.com/originals/af/d6/09/afd609a376bdc59d445d1737ce463701.jpg");
+    background-image: url("https://images.pexels.com/photos/1113272/pexels-photo-1113272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: fill;
   }
 li {
     display: inline;
