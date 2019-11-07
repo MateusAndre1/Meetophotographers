@@ -61,7 +61,7 @@ export default function NewUploader() {
             </div>
             {
                 url ? ( 
-                    <img src={url} alt="logo" />
+                    <img src={url} height="300px" width="300px" alt="logo" />
                 ) : (
                     <img src={ph} className="App-logo" alt="logo" />
                 )

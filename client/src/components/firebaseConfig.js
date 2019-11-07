@@ -2,7 +2,7 @@ import firebase from "firebase";
 import "firebase/storage"
 
 var firebaseConfig = {
-    apiKey: "AIzaSyA-yK3wWQQt1JgLHGH1lW6AD2TCENxTClI",
+    apiKey: process.env.API_KEY,
     authDomain: "meetographers-3edf6.firebaseapp.com",
     databaseURL: "https://meetographers-3edf6.firebaseio.com",
     projectId: "meetographers-3edf6",
