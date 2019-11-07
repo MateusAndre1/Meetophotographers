@@ -35,7 +35,7 @@ class Photographer extends React.Component {
         API.grabImage({})
             .then(res => {
                 console.log(res.data);
-                let result = JSON.stringify(res.data[0].binImage);
+                let result = res.data[0].binImage;
                 
                     this.setState({
                         image: result
