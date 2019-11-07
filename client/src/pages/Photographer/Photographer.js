@@ -60,11 +60,16 @@ class Photographer extends React.Component {
     };
 
     deleteProfileHandler = () => {
-        API.destroyProfileImage({
-            id: this.state.imageId
-        }).then((res) => {
+
+        console.log("before destroy" + this.state.imageId);
+        
+        API.destroyProfileImage(
+            this.state.imageId
+        ).then((res) => {
             console.log(res);
             return res;
+        }).then(() => {
+            return window.location.href = "/members";
         })
     }
     handleFormSubmit = e => {
