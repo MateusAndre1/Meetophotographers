@@ -31,6 +31,6 @@ export default {
   destroyProfileImage: function(userData) {
     console.log(userData);
     
-    return axios.delete("/api/delete-profile-image/", userData);
+    return axios.delete("/api/delete-profile-image/" + userData);
   }
 };
