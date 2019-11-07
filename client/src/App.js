@@ -6,9 +6,9 @@ import Home from "./pages/Home";
 import Member from "./pages/Member";
 import Auth from "./utils/auth.js";
 import Nav from "./components/Nav";
-
-
+import Footer from "./components/Footer";
 import "./App.css"
+
 
 
 const ProtectedRoute = ({ component: Component, ...rest }) => (
@@ -39,7 +39,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+      <div>
         <div className="App">
+          
           <Nav />
           <div>
             <Switch>
@@ -51,7 +53,8 @@ class App extends Component {
             </Switch>
           </div>
         </div>
-        
+        <Footer />
+        </div>
       </BrowserRouter>
     );
   }
