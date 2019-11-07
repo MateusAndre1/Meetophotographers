@@ -42,11 +42,9 @@ export default function NewUploader() {
                 () => {
                     storage.ref("images").child(image.name).getDownloadURL().then(url => {
                         console.log(url);
-                        let newUrl = JSON.stringify(url);
-                        let imageName = JSON.stringify(image.name)
                         API.saveImage2({ 
-                            binImage: newUrl,
-                            profileImage: imageName,
+                            binImage: url,
+                            profileImage: image.name,
                             isProfile: true
                          })
                             .then((res) => {
