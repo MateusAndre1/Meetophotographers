@@ -39,10 +39,10 @@ export default class Nav extends Component {
                 </div>
               ) : (
                   <div>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login Here</Link></li>
-                    <li><Link to="/signup">SignUp Here</Link></li>
-                    <li><Link to="/members">Members Content</Link></li>
+                    <li><Link to="/"><span className="color">Home</span></Link></li>
+                    <li><Link to="/login"><span className="color">Login Here</span></Link></li>
+                    <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
+                    <li><Link to="/members"><span className="color">Members Content</span></Link></li>
                   </div>
                 )}
             </ul>
