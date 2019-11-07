@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {storage} from "../firebaseConfig.js"
-import ph from "../../150.png";
+import { storage } from "../firebaseConfig.js";
+import API from "../../utils/API"
 
 
 export default function NewUploader() {
@@ -8,6 +8,8 @@ export default function NewUploader() {
     const [url, setUrl] = useState("")
     const [progress, setProgress] = useState(0)
     const [error, setError] = useState("")
+    
+    
 
     const handChange = e => {
         const file = e.target.files[0];
@@ -17,9 +19,9 @@ export default function NewUploader() {
             if (validImageTypes.includes(fileType)) {
                 setError("")
                 setImage(file);
-            }else {
+            } else {
                 setError("Please select an image to upload")
-        } 
+            }
         }
     }
 
@@ -39,14 +41,27 @@ export default function NewUploader() {
                 },
                 () => {
                     storage.ref("images").child(image.name).getDownloadURL().then(url => {
+                        console.log(url);
+                        let newUrl = JSON.stringify(url);
+                        let imageName = JSON.stringify(image.name)
+                        API.saveImage2({ 
+                            binImage: newUrl,
+                            profileImage: imageName,
+                            isProfile: true
+                         })
+                            .then((res) => {
+                                return res;
+                            })
                         setUrl(url)
                         setProgress(0);
-                    })
+                        
+                    });
                 }
             );
         } else {
             setError("Error please choose an image to upload")
         }
+        return url;
     }
 
     return (
@@ -55,18 +70,12 @@ export default function NewUploader() {
                 <input type="file" onChange={handChange} />
                 <button onClick={handleUpload}>Upload</button>
             </div>
-            <div style={{height:"100px"}}>
+            <div style={{ height: "100px" }}>
                 {progress > 0 ? <progress value={progress} max="100" /> : ""}
-                <p style={{color:"red"}}>{error}</p>
+                <p style={{ color: "red" }}>{error}</p>
             </div>
-            {
-                url ? ( 
-                    <img src={url} height="300px" width="300px" alt="logo" />
-                ) : (
-                    <img src={ph} className="App-logo" alt="logo" />
-                )
-            }
-            
+           
+
         </div>
     )
 }

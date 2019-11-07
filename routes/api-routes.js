@@ -113,6 +113,22 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/save-profile-image", (req, res) => {
+
+    db.Image.create({
+      firstName: req.user.firstName,
+      profileImage: req.body.profileImage,
+      binImage: req.body.binImage,
+      UserId: req.user.id,
+      isProfile: req.body.isProfile
+    }).then(function () {
+      return res;
+      
+    }).catch(function (error) {
+      console.log(error);
+    });
+  });
+
   app.post("/api/profile-image", function (req, res) {
 
     // console.log(req.body);

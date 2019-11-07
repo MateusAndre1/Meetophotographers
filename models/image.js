@@ -11,6 +11,10 @@ module.exports = function (sequelize, DataTypes) {
       binImage: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      isProfile: {
+        type: DataTypes.BOOLEAN,
+        default: false
       }
     }); 
     Image.associate = function (models) {
