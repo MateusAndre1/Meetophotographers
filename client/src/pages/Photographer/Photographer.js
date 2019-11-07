@@ -95,7 +95,7 @@ class Photographer extends React.Component {
                                     <img src={ph} className="App-logo" alt="logo" />
                                 )
                         } */}
-                        <img src="firebasestorage.googleapis.com/v0/b/meetographers-3edf6.appspot.com/o/images%2F106490.jpg?alt=media&token=f3f73526-bcd1-45d9-86d7-31130fa0e88a" height="300px" width="300px" alt="logo" />
+                        <img src={this.state.image} height="300px" width="300px" alt="logo" />
                     </div>
                 </div>
                 <div>
