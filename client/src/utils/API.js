@@ -27,5 +27,10 @@ export default {
   },
   grabImage: function(userData) {
     return axios.post("/api/profile-image", userData);
+  },
+  destroyProfileImage: function(userData) {
+    console.log(userData);
+    
+    return axios.delete("/api/delete-profile-image/", userData);
   }
 };

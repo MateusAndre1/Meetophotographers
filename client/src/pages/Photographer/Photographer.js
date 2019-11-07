@@ -2,7 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement/InputElement";
 import NewUploader from "../../components/NewUploader"
-// import ph from "../../150.png"
+import ph from "../../150.png"
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -13,14 +13,20 @@ class Photographer extends React.Component {
             specialty: "",
             profileImage: "",
             image: "",
-            isProfile: false
+            isProfile: false,
+            imageId: 0
         };
     }
 
     async componentDidMount() {
+        this.loadUserData();
+        this.loadProfileImage();
+    }
+
+    loadUserData = () => {
         API.grabUser()
             .then(res => {
-                // console.log(res);
+                console.log(res);
                 this.setState({
                     firstName: res.data.firstName
                 })
@@ -28,7 +34,6 @@ class Photographer extends React.Component {
             .catch(err => {
                 console.log(err);
             })
-        this.loadProfileImage();
     }
 
     loadProfileImage = () => {
@@ -36,11 +41,13 @@ class Photographer extends React.Component {
             .then(res => {
                 console.log(res.data);
                 let result = res.data[0].binImage;
-                
-                    this.setState({
-                        image: result
-                    })
-                
+                let id = res.data[0].id;
+
+                this.setState({
+                    image: result,
+                    imageId: id
+                })
+
             })
             .catch(err => console.log(err));
     };
@@ -52,7 +59,14 @@ class Photographer extends React.Component {
         });
     };
 
-
+    deleteProfileHandler = () => {
+        API.destroyProfileImage({
+            id: this.state.imageId
+        }).then((res) => {
+            console.log(res);
+            return res;
+        })
+    }
     handleFormSubmit = e => {
         e.preventDefault();
         API.saveGrapher({
@@ -70,6 +84,36 @@ class Photographer extends React.Component {
             <div className="container">
                 I am a GRAPHER {this.state.firstName}
                 <div className="row">
+
+                    <div className="col-md-6 col-md-offset-3">
+                        <h2>Profile Picture</h2>
+
+
+                        {
+                            this.state.image ? (
+                                <div className="pos-f-t" style={{ width: "300px" }}>
+                                    <img src={this.state.image} height="300px" width="300px" alt="logo" />
+                                    <div className="collapse" id="navbarToggleExternalContent">
+                                        <div className="bg-dark p-4">
+                                            <button onClick={this.deleteProfileHandler} className="btn btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                    <nav className="navbar navbar-dark bg-dark">
+                                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span className="navbar-toggler-icon"></span>
+                                        </button>
+                                    </nav>
+                                </div>
+                            ) : (
+                                    <div>
+                                        <NewUploader />
+                                        <img src={ph} className="App-logo" alt="logo" />
+                                    </div>
+                                )
+                        }
+
+
+                    </div>
                     <div className="col-md-6 col-md-offset-3">
                         <h2>What is your Specialty</h2>
 
@@ -87,15 +131,7 @@ class Photographer extends React.Component {
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
                         </form>
 
-                        <NewUploader />
-                        {/* {
-                            this.state.image ? (
-                                <img src={this.state.image} height="300px" width="300px" alt="logo" />
-                            ) : (
-                                    <img src={ph} className="App-logo" alt="logo" />
-                                )
-                        } */}
-                        <img src={this.state.image} height="300px" width="300px" alt="logo" />
+
                     </div>
                 </div>
                 <div>

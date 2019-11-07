@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "test") {
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-//app.use(routes);
+// app.use(routes);
 
 // Requiring our routes
 require("./routes/api-routes.js")(app);
