@@ -123,8 +123,8 @@ module.exports = function (app) {
       isProfile: req.body.isProfile
     }).then(function () {
       return res;
-      
-    }).catch(function (error) {
+    })
+    .catch(function (error) {
       console.log(error);
     });
   });
@@ -155,6 +155,17 @@ module.exports = function (app) {
       return res.json(data);
     }).catch(function (error) {
       console.log(error);
+    });
+  });
+
+  app.delete("/api/delete-profile-image/:id", function(req, res) {
+    // Delete the Author with the id available to us in req.params.id
+    db.Image.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data) {
+      res.json(data);
     });
   });
 

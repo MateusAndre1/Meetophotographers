@@ -25,7 +25,8 @@ export default function NewUploader() {
         }
     }
 
-    const handleUpload = () => {
+    const handleUpload = (e) => {
+        e.preventDefault();
         if (image) {
             const uploadTask = storage.ref(`images/${image.name}`).put(image)
             uploadTask.on(
@@ -48,12 +49,13 @@ export default function NewUploader() {
                             isProfile: true
                          })
                             .then((res) => {
-                                return res;
+                                console.log(res);
                             })
                         setUrl(url)
                         setProgress(0);
-                        
-                    });
+                    }).then(() =>{
+                        return window.location.href = "/members"
+                    })
                 }
             );
         } else {
