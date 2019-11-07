@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import Jumbotron from "../../components/Jumbotron"
-import Footer from "../../components/Footer";
+
 
 class Home extends React.Component {
     state = {
@@ -44,7 +44,6 @@ class Home extends React.Component {
         return (
             <>
             <Jumbotron />
-            <Footer />
             </>
             
             
