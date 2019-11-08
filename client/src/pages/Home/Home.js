@@ -1,6 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
-import Jumbotron from "../../components/Jumbotron"
+import VideoBg from "../../components/VideoBg"
 
 
 class Home extends React.Component {
@@ -43,11 +43,8 @@ class Home extends React.Component {
     render() {
         return (
             <>
-            <Jumbotron />
+            <VideoBg />
             </>
-            
-            
-            
         )
     }
 };

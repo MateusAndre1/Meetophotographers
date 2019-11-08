@@ -1,8 +1,9 @@
 import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement/InputElement";
+import { InputElement2 } from "../../components/InputElement2/InputElement2";
 import NewUploader from "../../components/NewUploader"
-import ph from "../../150.png"
+import ph from "../../150.jpg"
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -14,7 +15,8 @@ class Photographer extends React.Component {
             profileImage: "",
             image: "",
             isProfile: false,
-            imageId: 0
+            imageId: 0,
+            about: ""
         };
     }
 
@@ -62,7 +64,7 @@ class Photographer extends React.Component {
     deleteProfileHandler = () => {
 
         console.log("before destroy" + this.state.imageId);
-        
+
         API.destroyProfileImage(
             this.state.imageId
         ).then((res) => {
@@ -75,11 +77,12 @@ class Photographer extends React.Component {
     handleFormSubmit = e => {
         e.preventDefault();
         API.saveGrapher({
-            specialty: this.state.specialty
+            specialty: this.state.specialty,
+            about: this.state.about
         })
-        .then((res) => {
-            console.log(res);
-            res.redirect("/members");
+            .then((res) => {
+                console.log(res);
+                return window.location.href = "/members";
             })
             .catch(err => console.log(err));
     };
@@ -87,13 +90,9 @@ class Photographer extends React.Component {
     render() {
         return (
             <div className="container">
-                I am a GRAPHER {this.state.firstName}
                 <div className="row">
-
                     <div className="col-md-6 col-md-offset-3">
                         <h2>Profile Picture</h2>
-
-
                         {
                             this.state.image ? (
                                 <div className="pos-f-t" style={{ width: "300px" }}>
@@ -111,17 +110,14 @@ class Photographer extends React.Component {
                                 </div>
                             ) : (
                                     <div>
+                                        <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
                                         <NewUploader />
-                                        <img src={ph} className="App-logo" alt="logo" />
                                     </div>
                                 )
                         }
-
-
                     </div>
                     <div className="col-md-6 col-md-offset-3">
                         <h2>What is your Specialty</h2>
-
                         <form>
                             <InputElement
                                 value={this.state.specialty}
@@ -130,13 +126,20 @@ class Photographer extends React.Component {
                                 placeholder="Wedding"
                                 label="specialty"
                                 type="text" />
+                            <InputElement2
+                                value={this.state.about}
+                                onChange={this.handleInputChange}
+                                name="about"
+                                placeholder=""
+                                label="About Section"
+                                type="text" />
+                                <div  className="text-right">
                             <button
                                 onClick={this.handleFormSubmit}
                                 className="btn btn-primary"
                                 disabled={!(this.state.specialty)} type="reset">Add</button>
+                                </div>
                         </form>
-
-
                     </div>
                 </div>
                 <div>

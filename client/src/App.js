@@ -39,11 +39,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div>
-        <div className="App">
-          
-          <Nav />
-          <div>
+        <>
+          <div className="App">
+            <Nav />
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/login" component={Login} exact />
@@ -52,9 +50,8 @@ class App extends Component {
               <Route render={() => <Redirect to="/" />} />
             </Switch>
           </div>
-        </div>
-        <Footer />
-        </div>
+          <Footer />
+        </>
       </BrowserRouter>
     );
   }

@@ -11,7 +11,10 @@ const AuthButton = withRouter(({ history }) => (
       }} className="btn btn-danger">Sign out</button>
     </p>
   ) : (
-      <p>You are not logged in.</p>
+    <>
+    <li><Link to="/login"><span className="color">Login Here</span></Link></li>
+    <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
+    </>
     )
 ));
 
@@ -34,15 +37,12 @@ export default class Nav extends Component {
             <ul>
               {this.state.authenticated ? (
                 <div>
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/members">Members Content</Link></li>
+                  <li><Link to="/"><span className="mgheader">Meetographers</span></Link></li>
+                  <li><Link to="/members"><span className="color ml-4">Members</span></Link></li>
                 </div>
               ) : (
                   <div>
-                    <li><Link to="/"><span className="color">Home</span></Link></li>
-                    <li><Link to="/login"><span className="color">Login Here</span></Link></li>
-                    <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
-                    <li><Link to="/members"><span className="color">Members Content</span></Link></li>
+                    <li><Link to="/"><span className="mgheader">Meetographers</span></Link></li>
                   </div>
                 )}
             </ul>

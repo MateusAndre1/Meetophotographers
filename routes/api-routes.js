@@ -64,6 +64,7 @@ module.exports = function (app) {
     db.Photographer.create({
       firstName: req.user.firstName,
       specialty: req.body.specialty,
+      about: req.body.about,
       UserId: req.user.id
     }).then(function (data) {
       return res.json(data);

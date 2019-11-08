@@ -7,6 +7,10 @@ module.exports = function (sequelize, DataTypes) {
     specialty: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    about: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   });
   Photographer.associate = function (models) {

@@ -66,11 +66,11 @@ export default function NewUploader() {
 
     return (
         <div>
-            <div>
-                <input type="file" onChange={handChange} />
+            <div className="mt-2">
+                <input type="file" onChange={handChange} style={{ width: "233px" }} />
                 <button onClick={handleUpload}>Upload</button>
             </div>
-            <div style={{ height: "100px" }}>
+            <div>
                 {progress > 0 ? <progress value={progress} max="100" /> : ""}
                 <p style={{ color: "red" }}>{error}</p>
             </div>

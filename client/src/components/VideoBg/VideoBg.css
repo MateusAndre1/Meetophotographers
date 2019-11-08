@@ -1,0 +1,30 @@
+#background-video {
+    position: fixed;
+    z-index: -1;
+    min-height: 100vh;
+    max-width: 210vh;
+}
+
+@media (min-aspect-ration: 16/9) {
+    #background-video {
+        width: 100%;
+        height: auto;
+    }
+	
+}
+
+@media (max-aspect-ration: 16/9) {
+    #background-video {
+        width: auto;
+        Height: 100%;
+    }
+	
+}
+
+@media (max-width: 767px) {
+	#background-video {
+        background: url(../../assets/images/staticBg.png);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}
