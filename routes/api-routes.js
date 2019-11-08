@@ -1,32 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-const multer = require("multer");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./client/src/assets/images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname)
-  }
-});
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png" || file.mimetype === "image.gif") {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFiler: fileFilter
-});
 
 module.exports = function (app) {
 
@@ -92,22 +67,6 @@ module.exports = function (app) {
       UserId: req.user.id
     }).then(function (data) {
       return res.json(data);
-    }).catch(function (error) {
-      console.log(error);
-    });
-  });
-
-  app.post("/api/images", upload.single("binImage"), (req, res) => {
-
-    console.log(req.file);
-    db.Image.create({
-      firstName: req.user.firstName,
-      profileImage: req.file.originalname,
-      binImage: req.file.path,
-      UserId: req.user.id
-    }).then(function () {
-      return res.redirect("/members");
-      
     }).catch(function (error) {
       console.log(error);
     });

@@ -16,11 +16,6 @@ export default {
   grabUser: function() {
     return axios.post("/api/user_data");
   },
-  saveImage: function (userData) {
-    console.log(userData + "userdata logs from API");
-    
-    return axios.post("/api/images", userData);
-  },
   saveImage2: function (userData) {
     console.log(userData);
     return axios.post("/api/save-profile-image", userData);
