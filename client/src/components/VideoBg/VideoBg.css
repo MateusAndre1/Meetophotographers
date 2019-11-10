@@ -1,8 +1,6 @@
 #background-video {
     position: fixed;
     z-index: -1;
-    min-height: 100vh;
-    max-width: 210vh;
 }
 
 @media (min-aspect-ration: 16/9) {
@@ -16,13 +14,16 @@
 @media (max-aspect-ration: 16/9) {
     #background-video {
         width: auto;
-        Height: 100%;
+        height: 100%;
     }
 	
 }
 
 @media (max-width: 767px) {
-	#background-video {
+    #background-video {
+        display: none;
+    }
+	body {
         background: url(../../assets/images/staticBg.png);
         background-size: cover;
         background-attachment: fixed;
