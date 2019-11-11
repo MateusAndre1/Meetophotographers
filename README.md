@@ -1,27 +1,21 @@
-Meetographers
--A social networking app for photographers to connect with and get booked by customers.
-You will be able to list your specializations as well as upload some sample photography. You can list your prices and be booked from our web interface.
+# Meetographers
+### A social networking app for photographers to connect with and get booked by customers.
+### You will be able to list your specializations as well as upload some sample photography. You can list your prices and be booked from our web interface.
 
-Getting Started
-* Clone the git repository on your computer you will need to have node installed. If you use npm run npm install, if you are using yarn you would need to run yarn install.
-* Once you all of the packages have been installed simply run npm start or yarn run and it will take you to the Meetographers webpage.
+## Built With
+ * React
+ * MySQL
+ * Firebase
+ * Express
+ * Passport
+ * Sequelize
+ * Bootstrap
 
-Built With
-* MySQL
-* Firebase
-* React
-* React dom
-* React Scripts
-* Express
-* Passport
-* Sequelize
-* Bootstrap
+### Visit the site: [Meetographers.com](https://www.meetographers.com)
 
-Authors
-* Andre Roque Lead & Back End Development
-https://www.andremroque.com/
-https://github.com/MateusAndre1
+# Authors
+ * Andre Roque Lead & Back End Development
+[www.andremroque.com](https://www.andremroque.com)
 
-* Eric LaMacchia Front End Development
-https://www.ericlamacchia.com/
-https://github.com/ericlamacchia
+ * Eric LaMacchia Front End Development
+[www.ericlamacchia.com](https://www.ericlamacchia.com)
