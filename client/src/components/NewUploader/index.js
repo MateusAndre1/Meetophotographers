@@ -3,7 +3,7 @@ import { storage } from "../firebaseConfig.js";
 import API from "../../utils/API"
 
 
-export default function NewUploader() {
+export default function NewUploader(props) {
     const [image, setImage] = useState(null)
     const [url, setUrl] = useState("")
     const [progress, setProgress] = useState(0)
@@ -46,7 +46,7 @@ export default function NewUploader() {
                         API.saveImage2({ 
                             binImage: url,
                             profileImage: image.name,
-                            isProfile: true
+                            isProfile: props.isProfile
                          })
                             .then((res) => {
                                 console.log(res);
@@ -71,7 +71,7 @@ export default function NewUploader() {
                 <button onClick={handleUpload}>Upload</button>
             </div>
             <div>
-                {progress > 0 ? <progress value={progress} max="100" /> : ""}
+                {progress > 0 ? <progress value={progress} max="100" /> : null}
                 <p style={{ color: "red" }}>{error}</p>
             </div>
            

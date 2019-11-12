@@ -41,15 +41,19 @@ class Photographer extends React.Component {
     loadProfileImage = () => {
         API.grabImage({})
             .then(res => {
-                console.log(res.data);
-                let result = res.data[0].binImage;
-                let id = res.data[0].id;
-
-                this.setState({
-                    image: result,
-                    imageId: id
-                })
-
+                // console.log(res.data);
+                let data = res.data;
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].isProfile === true) {
+                        console.log(data[i].id);
+                        let result = data[i].binImage;
+                        let id = data[i].id;
+                        this.setState({
+                            image: result,
+                            imageId: id
+                        })
+                    }
+                }
             })
             .catch(err => console.log(err));
     };
@@ -111,7 +115,7 @@ class Photographer extends React.Component {
                             ) : (
                                     <div>
                                         <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
-                                        <NewUploader />
+                                        <NewUploader isProfile="true"/>
                                     </div>
                                 )
                         }
