@@ -98,8 +98,6 @@ module.exports = function (app) {
         UserId: req.user.id
       }
     }).then(function (data) {
-      // console.log(data);
-
       return res.json(data);
     }).catch(function (error) {
       console.log(error);

@@ -2,8 +2,10 @@ import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
-import NewUploader from "../../components/NewUploader"
-import ph from "../../150.jpg"
+import Uploader from "../../components/Uploader";
+import ph from "../../150.jpg";
+import { Col, Row, Container } from "../../components/Grid";
+import GalaryDisplay from "../../components/GalaryDisplay";
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -16,13 +18,17 @@ class Photographer extends React.Component {
             image: "",
             isProfile: false,
             imageId: 0,
-            about: ""
+            about: "",
+            galarys: []
         };
+        
+        
     }
+
 
     async componentDidMount() {
         this.loadUserData();
-        this.loadProfileImage();
+        this.loadImage();
     }
 
     loadUserData = () => {
@@ -38,18 +44,30 @@ class Photographer extends React.Component {
             })
     }
 
-    loadProfileImage = () => {
+    loadImage = () => {
         API.grabImage({})
             .then(res => {
-                console.log(res.data);
-                let result = res.data[0].binImage;
-                let id = res.data[0].id;
-
+                // console.log(res.data);
+                let data = res.data;
+                let newGalarys = [];
                 this.setState({
-                    image: result,
-                    imageId: id
+                    galarys: newGalarys
                 })
-
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].isProfile === true) {
+                        // console.log(data[i].id);
+                        let result = data[i].binImage;
+                        let id = data[i].id;
+                        this.setState({
+                            image: result,
+                            imageId: id
+                        })
+                    } else {
+                        let result2 = data[i]
+                        newGalarys.push(result2)
+                    }
+                }
+                // console.log(newGalarys);
             })
             .catch(err => console.log(err));
     };
@@ -61,7 +79,7 @@ class Photographer extends React.Component {
         });
     };
 
-    deleteProfileHandler = () => {
+    deleteProfileImage = () => {
 
         console.log("before destroy" + this.state.imageId);
 
@@ -71,9 +89,10 @@ class Photographer extends React.Component {
             console.log(res);
             return res;
         }).then(() => {
-            return window.location.href = "/members";
+            return window.location.reload();
         })
     }
+
     handleFormSubmit = e => {
         e.preventDefault();
         API.saveGrapher({
@@ -88,10 +107,11 @@ class Photographer extends React.Component {
     };
 
     render() {
+
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
+            <Container>
+                <Row>
+                    <Col size="md-6">
                         <h2>Profile Picture</h2>
                         {
                             this.state.image ? (
@@ -99,7 +119,7 @@ class Photographer extends React.Component {
                                     <img src={this.state.image} height="300px" width="300px" alt="logo" />
                                     <div className="collapse" id="navbarToggleExternalContent">
                                         <div className="bg-dark p-4">
-                                            <button onClick={this.deleteProfileHandler} className="btn btn-danger">Delete</button>
+                                            <button onClick={this.deleteProfileImage} className="btn btn-danger">Delete</button>
                                         </div>
                                     </div>
                                     <nav className="navbar navbar-dark bg-dark">
@@ -111,12 +131,12 @@ class Photographer extends React.Component {
                             ) : (
                                     <div>
                                         <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
-                                        <NewUploader />
+                                        <Uploader isProfile="true" />
                                     </div>
                                 )
                         }
-                    </div>
-                    <div className="col-md-6 col-md-offset-3">
+                    </Col>
+                    <Col size="md-6">
                         <h2>What is your Specialty</h2>
                         <form>
                             <InputElement
@@ -133,19 +153,30 @@ class Photographer extends React.Component {
                                 placeholder=""
                                 label="About Section"
                                 type="text" />
-                                <div  className="text-right">
-                            <button
-                                onClick={this.handleFormSubmit}
-                                className="btn btn-primary"
-                                disabled={!(this.state.specialty)} type="reset">Add</button>
-                                </div>
+                            <div className="text-right">
+                                <button
+                                    onClick={this.handleFormSubmit}
+                                    className="btn btn-primary"
+                                    disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                            </div>
                         </form>
+                    </Col>
+                </Row>
+                <div className="mt-5">
+                    <h2>Upload photos to galary</h2>
+                    <Uploader isProfile="false"/>
+                    <div>
+                        <Row>
+                            {this.state.galarys.map(galary => {
+                                return <GalaryDisplay
+                                    key={galary.id}
+                                    img={galary.binImage}
+                                />
+                            })}
+                        </Row>
                     </div>
                 </div>
-                <div>
-
-                </div>
-            </div>
+            </Container>
         )
     }
 }
