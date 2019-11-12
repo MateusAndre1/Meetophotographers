@@ -24,7 +24,7 @@
         display: none;
     }
 	body {
-        background: url(../../assets/images/staticBg.png);
+        background: url(/assets/images/staticBg.png);
         background-size: cover;
         background-attachment: fixed;
     }

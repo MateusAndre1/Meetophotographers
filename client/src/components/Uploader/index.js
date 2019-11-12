@@ -3,7 +3,7 @@ import { storage } from "../firebaseConfig.js";
 import API from "../../utils/API"
 
 
-export default function NewUploader(props) {
+export default function Uploader(props) {
     const [image, setImage] = useState(null)
     const [url, setUrl] = useState("")
     const [progress, setProgress] = useState(0)
@@ -54,7 +54,7 @@ export default function NewUploader(props) {
                         setUrl(url)
                         setProgress(0);
                     }).then(() =>{
-                        return window.location.href = "/members"
+                        return window.location.reload();
                     })
                 }
             );

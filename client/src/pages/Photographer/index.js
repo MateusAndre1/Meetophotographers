@@ -2,8 +2,10 @@ import React from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
-import NewUploader from "../../components/NewUploader"
-import ph from "../../150.jpg"
+import Uploader from "../../components/Uploader";
+import ph from "../../150.jpg";
+import { Col, Row, Container } from "../../components/Grid";
+import GalaryDisplay from "../../components/GalaryDisplay";
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -16,13 +18,19 @@ class Photographer extends React.Component {
             image: "",
             isProfile: false,
             imageId: 0,
-            about: ""
+            about: "",
+            galarys: [],
+            galayrysId: []
         };
+        
+        
     }
+
 
     async componentDidMount() {
         this.loadUserData();
         this.loadProfileImage();
+        
     }
 
     loadUserData = () => {
@@ -41,19 +49,32 @@ class Photographer extends React.Component {
     loadProfileImage = () => {
         API.grabImage({})
             .then(res => {
-                // console.log(res.data);
+                console.log(res.data);
                 let data = res.data;
+                let galarys = [];
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].isProfile === true) {
-                        console.log(data[i].id);
+                        // console.log(data[i].id);
                         let result = data[i].binImage;
                         let id = data[i].id;
                         this.setState({
                             image: result,
                             imageId: id
                         })
+                    } else {
+                        let res = data[i];
+                        
+                        // console.log(res);
+                        this.setState({
+                            galarys: res
+                        })
+
+                        galarys.push(res)
+                        
                     }
+                    
                 }
+                console.log(galarys);
             })
             .catch(err => console.log(err));
     };
@@ -75,9 +96,10 @@ class Photographer extends React.Component {
             console.log(res);
             return res;
         }).then(() => {
-            return window.location.href = "/members";
+            return window.location.reload();
         })
     }
+
     handleFormSubmit = e => {
         e.preventDefault();
         API.saveGrapher({
@@ -92,10 +114,11 @@ class Photographer extends React.Component {
     };
 
     render() {
+
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
+            <Container>
+                <Row>
+                    <Col size="md-6">
                         <h2>Profile Picture</h2>
                         {
                             this.state.image ? (
@@ -115,12 +138,12 @@ class Photographer extends React.Component {
                             ) : (
                                     <div>
                                         <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
-                                        <NewUploader isProfile="true"/>
+                                        <Uploader isProfile="true" />
                                     </div>
                                 )
                         }
-                    </div>
-                    <div className="col-md-6 col-md-offset-3">
+                    </Col>
+                    <Col size="md-6">
                         <h2>What is your Specialty</h2>
                         <form>
                             <InputElement
@@ -137,19 +160,27 @@ class Photographer extends React.Component {
                                 placeholder=""
                                 label="About Section"
                                 type="text" />
-                                <div  className="text-right">
-                            <button
-                                onClick={this.handleFormSubmit}
-                                className="btn btn-primary"
-                                disabled={!(this.state.specialty)} type="reset">Add</button>
-                                </div>
+                            <div className="text-right">
+                                <button
+                                    onClick={this.handleFormSubmit}
+                                    className="btn btn-primary"
+                                    disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                            </div>
                         </form>
+                    </Col>
+                </Row>
+                <div className="mt-5">
+                    <h2>Upload photos to galary</h2>
+                    <Uploader />
+                    <div>
+                        <Row>
+                        { this.state.galarys.map(photo => {
+                            return (<GalaryDisplay key={photo.id} img={photo.binImage} />);
+                        })}
+                        </Row>
                     </div>
                 </div>
-                <div>
-
-                </div>
-            </div>
+            </Container>
         )
     }
 }
