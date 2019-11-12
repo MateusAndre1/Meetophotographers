@@ -19,8 +19,7 @@ class Photographer extends React.Component {
             isProfile: false,
             imageId: 0,
             about: "",
-            galarys: [],
-            galayrysId: []
+            galarys: []
         };
         
         
@@ -29,8 +28,7 @@ class Photographer extends React.Component {
 
     async componentDidMount() {
         this.loadUserData();
-        this.loadProfileImage();
-        
+        this.loadImage();
     }
 
     loadUserData = () => {
@@ -46,12 +44,15 @@ class Photographer extends React.Component {
             })
     }
 
-    loadProfileImage = () => {
+    loadImage = () => {
         API.grabImage({})
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 let data = res.data;
-                let galarys = [];
+                let newGalarys = [];
+                this.setState({
+                    galarys: newGalarys
+                })
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].isProfile === true) {
                         // console.log(data[i].id);
@@ -62,19 +63,11 @@ class Photographer extends React.Component {
                             imageId: id
                         })
                     } else {
-                        let res = data[i];
-                        
-                        // console.log(res);
-                        this.setState({
-                            galarys: res
-                        })
-
-                        galarys.push(res)
-                        
+                        let result2 = data[i]
+                        newGalarys.push(result2)
                     }
-                    
                 }
-                console.log(galarys);
+                // console.log(newGalarys);
             })
             .catch(err => console.log(err));
     };
@@ -86,7 +79,7 @@ class Photographer extends React.Component {
         });
     };
 
-    deleteProfileHandler = () => {
+    deleteProfileImage = () => {
 
         console.log("before destroy" + this.state.imageId);
 
@@ -126,7 +119,7 @@ class Photographer extends React.Component {
                                     <img src={this.state.image} height="300px" width="300px" alt="logo" />
                                     <div className="collapse" id="navbarToggleExternalContent">
                                         <div className="bg-dark p-4">
-                                            <button onClick={this.deleteProfileHandler} className="btn btn-danger">Delete</button>
+                                            <button onClick={this.deleteProfileImage} className="btn btn-danger">Delete</button>
                                         </div>
                                     </div>
                                     <nav className="navbar navbar-dark bg-dark">
@@ -171,12 +164,15 @@ class Photographer extends React.Component {
                 </Row>
                 <div className="mt-5">
                     <h2>Upload photos to galary</h2>
-                    <Uploader />
+                    <Uploader isProfile="false"/>
                     <div>
                         <Row>
-                        { this.state.galarys.map(photo => {
-                            return (<GalaryDisplay key={photo.id} img={photo.binImage} />);
-                        })}
+                            {this.state.galarys.map(galary => {
+                                return <GalaryDisplay
+                                    key={galary.id}
+                                    img={galary.binImage}
+                                />
+                            })}
                         </Row>
                     </div>
                 </div>
