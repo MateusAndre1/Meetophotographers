@@ -3,10 +3,10 @@ import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
 import Uploader from "../../components/Uploader";
-import ph from "../../150.jpg";
 import { Col, Row, Container } from "../../components/Grid";
 import GalaryDisplay from "../../components/GalaryDisplay";
 import ProfileImage from "../../components/ProfileImage";
+import ProfileImageHldr from "../../components/ProfileImageHldr";
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -118,10 +118,7 @@ class Photographer extends React.Component {
                             this.state.image ? (
                                 <ProfileImage src={this.state.image} onClick={this.deleteProfileImage} />
                             ) : (
-                                    <div>
-                                        <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
-                                        <Uploader isProfile="true" />
-                                    </div>
+                                    <ProfileImageHldr />
                                 )
                         }
                     </Col>
