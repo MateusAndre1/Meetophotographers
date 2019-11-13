@@ -1,22 +1,20 @@
 import React from 'react';
+import "./ProfileImage.css";
 
 
 export default function ProfileImage(props) {
 
 
     return (
-        <div className="pos-f-t" style={{ width: "300px" }}>
-            <img src={props.src} height="300px" width="300px" alt="logo" />
-            <div className="collapse" id="navbarToggleExternalContent">
-                <div className="bg-dark p-4">
-                    <button onClick={props.onClick} className="btn btn-danger">Delete</button>
+        <>
+            <div className="card">
+                <div className="img-container">
+                    <img src={props.src} maxHeight="300px" className="img-fluid" alt="logo" />
+                    <div className="p-2 remove">
+                        <button onClick={props.onClick} className="btn btn-danger remove">Delete</button>
+                    </div>
                 </div>
             </div>
-            <nav className="navbar navbar-dark bg-dark">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-            </nav>
-        </div>
+        </>
     )
 }
