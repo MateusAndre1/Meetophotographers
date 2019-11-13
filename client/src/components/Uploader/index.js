@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { storage } from "../firebaseConfig.js";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 
 export default function Uploader(props) {
@@ -8,8 +8,8 @@ export default function Uploader(props) {
     const [url, setUrl] = useState("")
     const [progress, setProgress] = useState(0)
     const [error, setError] = useState("")
-    
-    
+
+
 
     const handChange = e => {
         const file = e.target.files[0];
@@ -23,12 +23,13 @@ export default function Uploader(props) {
                 setError("Please select an image to upload")
             }
         }
+        
     }
 
     const handleUpload = (e) => {
         e.preventDefault();
         if (image) {
-            const uploadTask = storage.ref(`images/${image.name}`).put(image)
+            const uploadTask = storage.ref(`images/${new Date().toISOString() + image.name}`).put(image)
             uploadTask.on(
                 "state_changed",
                 snapshot => {
@@ -43,17 +44,17 @@ export default function Uploader(props) {
                 () => {
                     storage.ref("images").child(image.name).getDownloadURL().then(url => {
                         console.log(url);
-                        API.saveImage2({ 
+                        API.saveImage2({
                             binImage: url,
-                            profileImage: image.name,
+                            profileImage: new Date().toISOString() + image.name,
                             isProfile: props.isProfile
-                         })
+                        })
                             .then((res) => {
                                 console.log(res);
                             })
                         setUrl(url)
                         setProgress(0);
-                    }).then(() =>{
+                    }).then(() => {
                         return window.location.reload();
                     })
                 }
@@ -65,17 +66,13 @@ export default function Uploader(props) {
     }
 
     return (
-        <div>
-            <div className="mt-2">
-                <input type="file" onChange={handChange} style={{ width: "233px" }} />
+        <>
+                <input style={{width: "220px"}} type="file" onChange={handChange} />
                 <button onClick={handleUpload}>Upload</button>
-            </div>
             <div>
                 {progress > 0 ? <progress value={progress} max="100" /> : null}
                 <p style={{ color: "red" }}>{error}</p>
             </div>
-           
-
-        </div>
+        </>
     )
 }

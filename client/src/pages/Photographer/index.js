@@ -3,9 +3,10 @@ import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
 import Uploader from "../../components/Uploader";
-import ph from "../../150.jpg";
 import { Col, Row, Container } from "../../components/Grid";
 import GalaryDisplay from "../../components/GalaryDisplay";
+import ProfileImage from "../../components/ProfileImage";
+import ProfileImageHldr from "../../components/ProfileImageHldr";
 
 class Photographer extends React.Component {
     constructor(props) {
@@ -21,8 +22,8 @@ class Photographer extends React.Component {
             about: "",
             galarys: []
         };
-        
-        
+
+
     }
 
 
@@ -115,24 +116,9 @@ class Photographer extends React.Component {
                         <h2>Profile Picture</h2>
                         {
                             this.state.image ? (
-                                <div className="pos-f-t" style={{ width: "300px" }}>
-                                    <img src={this.state.image} height="300px" width="300px" alt="logo" />
-                                    <div className="collapse" id="navbarToggleExternalContent">
-                                        <div className="bg-dark p-4">
-                                            <button onClick={this.deleteProfileImage} className="btn btn-danger">Delete</button>
-                                        </div>
-                                    </div>
-                                    <nav className="navbar navbar-dark bg-dark">
-                                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                                            <span className="navbar-toggler-icon"></span>
-                                        </button>
-                                    </nav>
-                                </div>
+                                <ProfileImage src={this.state.image} onClick={this.deleteProfileImage} />
                             ) : (
-                                    <div>
-                                        <img src={ph} height="300px" width="300px" className="App-logo" alt="logo" />
-                                        <Uploader isProfile="true" />
-                                    </div>
+                                    <ProfileImageHldr />
                                 )
                         }
                     </Col>
@@ -164,7 +150,7 @@ class Photographer extends React.Component {
                 </Row>
                 <div className="mt-5">
                     <h2>Upload photos to galary</h2>
-                    <Uploader isProfile="false"/>
+                    <Uploader isProfile="false" />
                     <div>
                         <Row>
                             {this.state.galarys.map(galary => {

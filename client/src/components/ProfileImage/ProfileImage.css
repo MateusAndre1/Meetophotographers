@@ -1,0 +1,31 @@
+.card {
+    position: relative;
+    width: 200px;
+    min-width: 200px;
+    max-height: 300px;
+    box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
+    text-align: left;
+}
+
+.card > .img-container {
+    overflow: hidden;
+    text-align: center;
+}
+
+.img-container > .remove {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover {
+    background-color: #d50000;
+}
+
+.deleteBtn {
+    border: none;
+    border-radius: .5rem;
+    background-color: rgba(8, 8, 8, 0.692);
+    color: white;
+}
