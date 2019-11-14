@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import GraphersCard from "../../components/GraphersCard";
 
 class Customer extends React.Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class Customer extends React.Component {
         return (
             <div className="container">
                 Welcome to the Customer page {this.state.firstName}
+                <GraphersCard />
             </div>
         )
     }
