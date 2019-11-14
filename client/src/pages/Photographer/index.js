@@ -128,9 +128,9 @@ class Photographer extends React.Component {
                             <InputElement
                                 value={this.state.specialty}
                                 onChange={this.handleInputChange}
-                                name="specialty"
+                                name="Specialty"
                                 placeholder="Wedding"
-                                label="specialty"
+                                label="Specialty"
                                 type="text" />
                             <InputElement2
                                 value={this.state.about}
