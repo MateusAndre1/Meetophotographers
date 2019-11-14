@@ -1,7 +1,8 @@
 .card3 {
     position: relative;
+    width: 600px;
     max-width: 600px;
-    max-height: 300px;
+    max-height: 800px;
     text-align: left;
 }
 
@@ -12,7 +13,7 @@
 
 .galary {
     min-width: 200px;
-    max-height: 300px;
+    max-height: 800px;
 }
 
 .img-container4 > .remove3 {
