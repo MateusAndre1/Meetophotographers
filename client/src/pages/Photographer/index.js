@@ -90,7 +90,21 @@ class Photographer extends React.Component {
             console.log(res);
             return res;
         }).then(() => {
-            return window.location.reload();
+            window.location.reload();
+        })
+    }
+
+    deleteGalaryImage = (id) => {
+
+        console.log("before destroy" + id);
+
+        API.destroyProfileImage(
+            id
+        ).then((res) => {
+            console.log(res);
+            return res;
+        }).then(() => {
+            window.location.reload();
         })
     }
 
@@ -102,7 +116,7 @@ class Photographer extends React.Component {
         })
             .then((res) => {
                 console.log(res);
-                return window.location.href = "/members";
+                return window.location.reload();
             })
             .catch(err => console.log(err));
     };
@@ -154,7 +168,10 @@ class Photographer extends React.Component {
                     <div>
                         <Row>
                             {this.state.galarys.map(galary => {
-                                return <GalaryDisplay
+                                return <GalaryDisplay 
+                                    deleteGalaryImage={this.deleteGalaryImage}
+                                    id={galary.id}
+                                    value={galary.id}
                                     key={galary.id}
                                     img={galary.binImage}
                                 />
