@@ -6,7 +6,7 @@ export default function GalaryDisplay(props) {
 
   return (
     <>
-      <Col size="sm-3">
+      <Col size="6">
         <div className="card3">
           <div className="img-container4">
             <img src={props.img} className="img-fluid galary" alt="skills" />
