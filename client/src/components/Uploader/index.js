@@ -29,7 +29,7 @@ export default function Uploader(props) {
     const handleUpload = (e) => {
         e.preventDefault();
         if (image) {
-            const uploadTask = storage.ref(`images/${new Date().toISOString() + image.name}`).put(image)
+            const uploadTask = storage.ref(`images/${image.name}`).put(image)
             uploadTask.on(
                 "state_changed",
                 snapshot => {

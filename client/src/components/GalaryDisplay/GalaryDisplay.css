@@ -1,0 +1,34 @@
+.card3 {
+    position: relative;
+    max-width: 600px;
+    max-height: 300px;
+    text-align: left;
+}
+
+.card3 > .img-container4 {
+    overflow: hidden;
+    text-align: center;
+}
+
+.galary {
+    min-width: 200px;
+    max-height: 300px;
+}
+
+.img-container4 > .remove3 {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.deleteBtn3:hover {
+    background-color: #d50000;
+}
+
+.deleteBtn3 {
+    border: none;
+    border-radius: .5rem;
+    background-color: rgba(8, 8, 8, 0.692);
+    color: white;
+}
