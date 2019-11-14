@@ -142,9 +142,9 @@ class Photographer extends React.Component {
                             <InputElement
                                 value={this.state.specialty}
                                 onChange={this.handleInputChange}
-                                name="specialty"
+                                name="Specialty"
                                 placeholder="Wedding"
-                                label="specialty"
+                                label="Specialty"
                                 type="text" />
                             <InputElement2
                                 value={this.state.about}
@@ -163,7 +163,7 @@ class Photographer extends React.Component {
                     </Col>
                 </Row>
                 <div className="mt-5">
-                    <h2>Upload photos to galary</h2>
+                    <h2>Upload photos to gallery</h2>
                     <Uploader isProfile="false" />
                     <div>
                         <Row>
