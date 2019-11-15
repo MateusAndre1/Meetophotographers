@@ -109,6 +109,7 @@ module.exports = function (app) {
 
     db.Image.create({
       firstName: req.user.firstName,
+      lastName: req.user.lastName,
       profileImage: req.body.profileImage,
       binImage: req.body.binImage,
       UserId: req.user.id,
