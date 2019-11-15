@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Member from "./pages/Member";
+import Customer from "./pages/Customer";
 import Auth from "./utils/auth.js";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -47,6 +48,7 @@ class App extends Component {
               <Route path="/login" component={Login} exact />
               <Route path='/signup' component={Signup} exact />
               <ProtectedRoute path='/members' component={Member} exact />
+              <ProtectedRoute path='/book' component={Customer} exact />
               <Route render={() => <Redirect to="/" />} />
             </Switch>
           </div>

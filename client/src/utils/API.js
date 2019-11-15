@@ -7,8 +7,14 @@ export default {
   getUser: function (userData) {
     return axios.post("/api/login", userData)
   },
-  saveGrapher: function (userData, cb) {
-    return axios.post("/api/photographers", userData, cb)
+  saveGrapher: function (userData) {
+    return axios.post("/api/photographers", userData)
+  },
+  grabGrapher: function (userData) {
+    return axios.post("/api/photographers/info", userData)
+  },
+  updateGrapher: function (userData) {
+    return axios.put("/api/photographers/update", userData)
   },
   saveCustomer: function (userData) {
     return axios.post("/api/customers", userData)
@@ -25,6 +31,6 @@ export default {
   },
   destroyProfileImage: function (userData) {
     console.log(userData);
-    return axios.delete("/api/delete-profile-image/" + userData);
+    return axios.delete("/api/delete-image/" + userData);
   }
 };

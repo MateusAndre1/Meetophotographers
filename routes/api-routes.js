@@ -60,18 +60,49 @@ module.exports = function (app) {
 
   app.post("/api/photographers", (req, res) => {
 
-    console.log(req.file);
     db.Photographer.create({
       firstName: req.user.firstName,
       specialty: req.body.specialty,
       about: req.body.about,
-      UserId: req.user.id
+      UserId: req.user.id,
+      isReady: req.body.isReady
     }).then(function (data) {
       return res.json(data);
     }).catch(function (error) {
       console.log(error);
     });
   });
+
+  app.post("/api/photographers/info", (req, res) => {
+
+    db.Photographer.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function (data) {
+      return res.json(data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  });
+
+  app.put("/api/photographers/update", (req, res) => {
+
+    console.log(req.body);
+    db.Photographer.update({
+        specialty: req.body.specialty,
+        about: req.body.about,
+        isReady: req.body.isReady
+      },
+      {
+        where: {
+          UserId: req.user.id
+        }
+      }).then( (data) => {
+      return res.json(data);
+    })
+    
+  })
 
   app.post("/api/save-profile-image", (req, res) => {
 
@@ -116,7 +147,7 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/delete-profile-image/:id", function(req, res) {
+  app.delete("/api/delete-image/:id", function(req, res) {
     // Delete the Author with the id available to us in req.params.id
     db.Image.destroy({
       where: {

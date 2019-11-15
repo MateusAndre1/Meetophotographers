@@ -6,10 +6,12 @@ export default function GalaryDisplay(props) {
 
   return (
     <>
-      <Col size="6">
+      <Col size="sm-4">
         <div className="card3">
-          <div className="img-container4">
-            <img src={props.img} className="img-fluid galary" alt="skills" />
+          <div className="img-container4 mx-auto">
+            <a href={props.img} target="_blank" rel="noopener noreferrer">
+              <img src={props.img} className="img-fluid gallery" alt="skills" />
+            </a>
             <div className="p-2 remove3">
               <button onClick={() => props.deleteGalaryImage(props.id)} value={props.id} className="btn-sml deleteBtn3">Delete</button>
             </div>

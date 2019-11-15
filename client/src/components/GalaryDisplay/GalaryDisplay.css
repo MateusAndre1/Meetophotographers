@@ -1,19 +1,17 @@
 .card3 {
     position: relative;
-    width: 600px;
     max-width: 600px;
-    max-height: 800px;
+    max-height: 500px;
     text-align: left;
 }
 
-.card3 > .img-container4 {
+.card3 > .gallery {
+    max-height: 300px;
     overflow: hidden;
     text-align: center;
 }
-
-.galary {
-    min-width: 200px;
-    max-height: 800px;
+.gallery {
+    max-height: 300px;
 }
 
 .img-container4 > .remove3 {
