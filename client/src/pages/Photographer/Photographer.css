@@ -8,3 +8,6 @@
 .filetypes {
     font-size: 12px;
 }
+.hr {
+    border-bottom: 2px solid white;
+}
