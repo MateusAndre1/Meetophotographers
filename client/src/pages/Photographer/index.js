@@ -188,6 +188,7 @@ class Photographer extends Component {
                 </Row>
                 <div className="mt-5 gallerySection text-center">
                     <h2>Upload photos to gallery <span className="filetypes">(jpg/jpeg, PNG, or gif only)</span></h2>
+                    <hr className="hr"/>
                     <Uploader isProfile="false" />
                     <div>
                         <Row>
