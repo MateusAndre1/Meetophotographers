@@ -1,0 +1,10 @@
+.gallerySection {
+    background-color: rgba(10, 10, 10, 0.808);
+    padding: 10px;
+    border-radius: .5rem;
+    min-height: 400px;
+    color: white;
+}
+.filetypes {
+    font-size: 12px;
+}

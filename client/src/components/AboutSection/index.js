@@ -112,16 +112,18 @@ export default class AboutSection extends Component {
             {this.state.isReady ? (
               <div className="wrapper2">
                 <div>Would you like to deactive your profile from being viewed?</div>
-                <div className="text-right">
-                  <button className="btn-small btn-success edit" onClick={this.dontDeploy}>Yes</button>
+                <div className="text-center">
+                  <button className="btn-small btn-danger edit" onClick={this.dontDeploy}>Yes</button>
                 </div>
               </div>
             ) : (
                 <div className="wrapper2">
+                  <Col size="sm-12">
                   <div>If you are ready with your profile, go ahead and deploy it here (dont forget to add some photos if you haven't dont so yet!)</div>
-                  <div className="text-right mt-2">
-                    <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy me!</button>
-                  </div>
+                  </Col>
+                  <div className="text-center">
+                    <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy!</button>
+                    </div>
                 </div>
               )
             }

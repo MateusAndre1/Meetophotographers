@@ -62,6 +62,7 @@ module.exports = function (app) {
 
     db.Photographer.create({
       firstName: req.user.firstName,
+      lastName: req.user.lastName,
       specialty: req.body.specialty,
       about: req.body.about,
       UserId: req.user.id,
@@ -139,6 +140,7 @@ module.exports = function (app) {
     console.log(req.body);
     db.Customer.create({
       firstName: req.user.firstName,
+      lastName: req.user.lastName,
       UserId: req.user.id
     }).then(function (data) {
       return res.json(data);

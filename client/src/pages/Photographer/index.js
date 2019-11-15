@@ -8,6 +8,7 @@ import GalaryDisplay from "../../components/GalaryDisplay";
 import ProfileImage from "../../components/ProfileImage";
 import ProfileImageHldr from "../../components/ProfileImageHldr";
 import AboutSection from "../../components/AboutSection";
+import "./Photographer.css"
 
 class Photographer extends Component {
     constructor(props) {
@@ -185,8 +186,8 @@ class Photographer extends Component {
                     }
 
                 </Row>
-                <div className="mt-5">
-                    <h2>Upload photos to gallery</h2>
+                <div className="mt-5 gallerySection text-center">
+                    <h2>Upload photos to gallery <span className="filetypes">(jpg/jpeg, PNG, or gif only)</span></h2>
                     <Uploader isProfile="false" />
                     <div>
                         <Row>
