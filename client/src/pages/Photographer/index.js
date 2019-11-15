@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import API from "../../utils/API";
 import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
@@ -7,8 +7,9 @@ import { Col, Row, Container } from "../../components/Grid";
 import GalaryDisplay from "../../components/GalaryDisplay";
 import ProfileImage from "../../components/ProfileImage";
 import ProfileImageHldr from "../../components/ProfileImageHldr";
+import AboutSection from "../../components/AboutSection";
 
-class Photographer extends React.Component {
+class Photographer extends Component {
     constructor(props) {
         super(props);
 
@@ -30,6 +31,7 @@ class Photographer extends React.Component {
     async componentDidMount() {
         this.loadUserData();
         this.loadImage();
+        this.loadGrapher();
     }
 
     loadUserData = () => {
@@ -69,6 +71,20 @@ class Photographer extends React.Component {
                     }
                 }
                 // console.log(newGalarys);
+            })
+            .catch(err => console.log(err));
+    };
+
+    loadGrapher = () => {
+        API.grabGrapher({})
+            .then(res => {
+                console.log(res.data);
+                let data = res.data;
+                this.setState({
+                    grapherSpecialty: data[0].specialty,
+                    grapherAbout: data[0].about,
+                    grapherId: data[0].userId
+                })
             })
             .catch(err => console.log(err));
     };
@@ -136,31 +152,36 @@ class Photographer extends React.Component {
                                 )
                         }
                     </Col>
-                    <Col size="md-6">
-                        <h2>What is your Specialty</h2>
-                        <form>
-                            <InputElement
-                                value={this.state.specialty}
-                                onChange={this.handleInputChange}
-                                name="Specialty"
-                                placeholder="Wedding"
-                                label="Specialty"
-                                type="text" />
-                            <InputElement2
-                                value={this.state.about}
-                                onChange={this.handleInputChange}
-                                name="about"
-                                placeholder=""
-                                label="About Section"
-                                type="text" />
-                            <div className="text-right">
-                                <button
-                                    onClick={this.handleFormSubmit}
-                                    className="btn btn-primary"
-                                    disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
-                            </div>
-                        </form>
-                    </Col>
+                    {
+                        this.state.grapherSpecialty ? (
+                            <AboutSection />
+                        ) : (
+                                <Col size="md-6">
+                                    <h2>What is your Specialty</h2>
+                                    <form>
+                                        <InputElement
+                                            value={this.state.specialty}
+                                            onChange={this.handleInputChange}
+                                            name="specialty"
+                                            placeholder="Wedding"
+                                            label="Specialty"
+                                            type="text" />
+                                        <InputElement2
+                                            value={this.state.about}
+                                            onChange={this.handleInputChange}
+                                            name="about"
+                                            placeholder="Tell us about yourself, you can include any other sub specialties here as well."
+                                            label="About Section"
+                                            type="text" />
+                                        <button
+                                            onClick={this.handleFormSubmit}
+                                            className="btn btn-primary"
+                                            disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                    </form>
+                                </Col>
+                            )
+                    }
+
                 </Row>
                 <div className="mt-5">
                     <h2>Upload photos to gallery</h2>
@@ -168,7 +189,7 @@ class Photographer extends React.Component {
                     <div>
                         <Row>
                             {this.state.galarys.map(galary => {
-                                return <GalaryDisplay 
+                                return <GalaryDisplay
                                     deleteGalaryImage={this.deleteGalaryImage}
                                     id={galary.id}
                                     value={galary.id}
@@ -179,7 +200,7 @@ class Photographer extends React.Component {
                         </Row>
                     </div>
                 </div>
-            </Container>
+            </Container >
         )
     }
 }
