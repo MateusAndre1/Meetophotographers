@@ -1,8 +1,8 @@
 import React from "react";
 import { Col } from "../Grid";
-import "./GalaryDisplay.css"
+import "./GalleryDisplay.css"
 
-export default function GalaryDisplay(props) {
+export default function GalleryDisplay(props) {
 
   return (
     <>
@@ -13,7 +13,7 @@ export default function GalaryDisplay(props) {
               <img src={props.img} className="img-fluid gallery" alt="skills" />
             </a>
             <div className="p-2 remove3">
-              <button onClick={() => props.deleteGalaryImage(props.id)} value={props.id} className="btn-sml deleteBtn3">Delete</button>
+              <button onClick={() => props.deletegalleryImage(props.id)} value={props.id} className="btn-sml deleteBtn3">Delete</button>
             </div>
           </div>
         </div>

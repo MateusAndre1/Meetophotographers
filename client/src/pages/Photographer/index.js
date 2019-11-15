@@ -4,7 +4,7 @@ import { InputElement } from "../../components/InputElement";
 import { InputElement2 } from "../../components/InputElement2";
 import Uploader from "../../components/Uploader";
 import { Col, Row, Container } from "../../components/Grid";
-import GalaryDisplay from "../../components/GalaryDisplay";
+import GalleryDisplay from "../../components/GalleryDisplay";
 import ProfileImage from "../../components/ProfileImage";
 import ProfileImageHldr from "../../components/ProfileImageHldr";
 import AboutSection from "../../components/AboutSection";
@@ -22,7 +22,7 @@ class Photographer extends Component {
             isProfile: false,
             imageId: 0,
             about: "",
-            galarys: []
+            gallerys: []
         };
 
 
@@ -53,9 +53,9 @@ class Photographer extends Component {
             .then(res => {
                 // console.log(res.data);
                 let data = res.data;
-                let newGalarys = [];
+                let newgallerys = [];
                 this.setState({
-                    galarys: newGalarys
+                    gallerys: newgallerys
                 })
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].isProfile === true) {
@@ -68,10 +68,10 @@ class Photographer extends Component {
                         })
                     } else {
                         let result2 = data[i]
-                        newGalarys.push(result2)
+                        newgallerys.push(result2)
                     }
                 }
-                // console.log(newGalarys);
+                // console.log(newgallerys);
             })
             .catch(err => console.log(err));
     };
@@ -111,7 +111,7 @@ class Photographer extends Component {
         })
     }
 
-    deleteGalaryImage = (id) => {
+    deletegalleryImage = (id) => {
 
         console.log("before destroy" + id);
 
@@ -191,13 +191,13 @@ class Photographer extends Component {
                     <Uploader isProfile="false" />
                     <div>
                         <Row>
-                            {this.state.galarys.map(galary => {
-                                return <GalaryDisplay
-                                    deleteGalaryImage={this.deleteGalaryImage}
-                                    id={galary.id}
-                                    value={galary.id}
-                                    key={galary.id}
-                                    img={galary.binImage}
+                            {this.state.gallerys.map(gallery => {
+                                return <GalleryDisplay
+                                    deletegalleryImage={this.deletegalleryImage}
+                                    id={gallery.id}
+                                    value={gallery.id}
+                                    key={gallery.id}
+                                    img={gallery.binImage}
                                 />
                             })}
                         </Row>
