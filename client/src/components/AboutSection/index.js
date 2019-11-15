@@ -14,7 +14,8 @@ export default class AboutSection extends Component {
       grapherAbout: "",
       grapherId: "",
       specialty: "",
-      about: ""
+      about: "",
+      isReady: ""
     }
   }
 
@@ -43,7 +44,8 @@ export default class AboutSection extends Component {
         this.setState({
           grapherSpecialty: data[0].specialty,
           grapherAbout: data[0].about,
-          grapherId: data[0].UserId
+          grapherId: data[0].UserId,
+          isReady: data[0].isReady
         })
       })
       .catch(err => console.log(err));
@@ -63,39 +65,97 @@ export default class AboutSection extends Component {
     })
   }
 
+  editAboutBack = e => {
+    e.preventDefault();
+    this.setState({
+      isEdit: true
+    })
+  }
+
+  readyDeploy = e => {
+    e.preventDefault();
+    API.updateGrapher({
+      isReady: true
+    })
+      .then((res) => {
+        console.log(res);
+        return window.location.reload();
+      })
+      .catch(err => console.log(err));
+  }
+
+  dontDeploy = e => {
+    e.preventDefault();
+    API.updateGrapher({
+      isReady: false
+    })
+      .then((res) => {
+        console.log(res);
+        return window.location.reload();
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <>
         {this.state.isEdit ? (
+
           <Col size="md-6">
-            <h2 className="mb-4">Specialty: {this.state.grapherSpecialty}</h2>
-            <h4>{this.state.grapherAbout}</h4>
-            <div className="text-right mt-4">
-              <button className="btn-small btn-danger edit" onClick={this.editAbout}>Edit</button>
+            <div className="wrapper">
+              <h2 className="mb-4 specialtySection">Specialty: {this.state.grapherSpecialty}</h2>
+              <h5 className="aboutSection">{this.state.grapherAbout}</h5>
+              <div className="text-right mt-4">
+                <button className="btn-small btn-danger edit" onClick={this.editAbout}>Edit</button>
+              </div>
             </div>
+            {this.state.isReady ? (
+              <div className="wrapper2">
+                <div>Would you like to deactive your profile from being viewed?</div>
+                <div className="text-right">
+                  <button className="btn-small btn-success edit" onClick={this.dontDeploy}>Yes</button>
+                </div>
+              </div>
+            ) : (
+                <div className="wrapper2">
+                  <div>If you are ready with your profile, go ahead and deploy it here (dont forget to add some photos if you haven't dont so yet!)</div>
+                  <div className="text-right mt-2">
+                    <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy me!</button>
+                  </div>
+                </div>
+              )
+            }
+
           </Col>
+
         ) : (
             <Col size="md-6">
-              <h2>What is your Specialty</h2>
+              <h2>Describe yourself</h2>
               <form>
                 <InputElement
                   value={this.state.specialty}
                   onChange={this.handleInputChange}
                   name="specialty"
                   placeholder="Wedding"
-                  label="Specialty"
+                  label="Main Specialty"
                   type="text" />
                 <InputElement2
                   value={this.state.about}
                   onChange={this.handleInputChange}
                   name="about"
                   placeholder="Tell us about yourself, you can include any other sub specialties here as well."
-                  label="About Section"
+                  label="About"
                   type="text" />
-                <button
-                  onClick={this.updateGrapher}
-                  className="btn btn-success"
-                  disabled={!(this.state.specialty && this.state.about)} type="reset">Save</button>
+                <div className="text-right mt-4">
+                  <button
+                    onClick={this.editAboutBack}
+                    className="btn-small mr-3 btn-danger edit"
+                    type="reset">Cancel</button>
+                  <button
+                    onClick={this.updateGrapher}
+                    className="btn-small btn-success edit"
+                    disabled={!(this.state.specialty && this.state.about)} type="reset">Save</button>
+                </div>
               </form>
             </Col>
           )

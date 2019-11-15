@@ -64,7 +64,8 @@ module.exports = function (app) {
       firstName: req.user.firstName,
       specialty: req.body.specialty,
       about: req.body.about,
-      UserId: req.user.id
+      UserId: req.user.id,
+      isReady: req.body.isReady
     }).then(function (data) {
       return res.json(data);
     }).catch(function (error) {
@@ -90,7 +91,8 @@ module.exports = function (app) {
     console.log(req.body);
     db.Photographer.update({
         specialty: req.body.specialty,
-        about: req.body.about
+        about: req.body.about,
+        isReady: req.body.isReady
       },
       {
         where: {

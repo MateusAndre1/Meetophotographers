@@ -173,10 +173,12 @@ class Photographer extends Component {
                                             placeholder="Tell us about yourself, you can include any other sub specialties here as well."
                                             label="About Section"
                                             type="text" />
-                                        <button
-                                            onClick={this.handleFormSubmit}
-                                            className="btn btn-primary"
-                                            disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                        <div className="text-right">
+                                            <button
+                                                onClick={this.handleFormSubmit}
+                                                className="btn btn-primary"
+                                                disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                        </div>
                                     </form>
                                 </Col>
                             )

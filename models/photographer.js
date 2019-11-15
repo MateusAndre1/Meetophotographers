@@ -11,6 +11,10 @@ module.exports = function (sequelize, DataTypes) {
     about: {
       type: DataTypes.TEXT,
       allowNull: false
+    },
+    isReady: {
+      type: DataTypes.BOOLEAN,
+      default: false
     }
   });
   Photographer.associate = function (models) {

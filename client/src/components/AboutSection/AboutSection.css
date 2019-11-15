@@ -4,3 +4,22 @@
 .edit {
     border-radius: .5rem;
 }
+.wrapper {
+    margin-top: 35px;
+    background-color: #2978ffb9;
+    padding: 20px;
+    border-radius: .5rem;
+}
+.aboutSection {
+    min-height: 100px;
+}
+.wrapper2 {
+    background-color: #ebc20bb9;
+    padding: 20px;
+    border-radius: .5rem;
+}
+.specialtySection {
+    background-color: rgba(30, 27, 187, 0.493);
+    padding: 10px;
+    border-radius: .5rem;
+}
