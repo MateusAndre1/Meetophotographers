@@ -26,7 +26,7 @@ class Customer extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container customer">
                 Welcome to the Customer page {this.state.firstName}
                 <GraphersCard />
             </div>
