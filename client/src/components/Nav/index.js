@@ -5,16 +5,23 @@ import "./Nav.css"
 
 const AuthButton = withRouter(({ history }) => (
   Auth.isUserAuthenticated() ? (
-    <p>
-      <button onClick={() => {
-        Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
-      }} className="btn btn-danger">Sign out</button>
-    </p>
-  ) : (
     <>
-    <li><Link to="/login"><span className="color">Login Here</span></Link></li>
-    <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
+      <div className="dropdown">
+        <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i className="fas fa-camera camera"></i>
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <button onClick={() => {
+            Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
+          }} className="btn ml-3">Sign out</button>
+        </div>
+      </div>
     </>
+  ) : (
+      <>
+        <li><Link to="/login"><span className="color">Login Here</span></Link></li>
+        <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
+      </>
     )
 ));
 

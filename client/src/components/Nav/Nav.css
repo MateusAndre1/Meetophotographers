@@ -11,3 +11,18 @@ nav {
     font-size: 30px;
     font-family: 'Pacifico', cursive;
 }
+.camera {
+    font-size: 40px;
+    color: #039be5;
+}
+.dropdown-toggle {
+    color: #039ae500;
+}
+.dropdown {
+    float: right;
+    margin-right: 80px;
+}
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+ }
