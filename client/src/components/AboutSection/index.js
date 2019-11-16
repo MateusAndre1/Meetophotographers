@@ -119,7 +119,7 @@ export default class AboutSection extends Component {
             ) : (
                 <div className="wrapper2">
                   <Col size="sm-12">
-                  <div>If you are ready with your profile, go ahead and deploy it here (dont forget to add some photos if you haven't dont so yet!)</div>
+                  <div>If you are ready with your profile, go ahead and deploy it here (dont forget to add some photos if you haven't done so yet!)</div>
                   </Col>
                   <div className="text-center">
                     <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy!</button>
