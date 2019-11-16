@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "./VideoBg.css"
 
 class VideoBg extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -10,13 +10,14 @@ class VideoBg extends Component {
         }
     }
 
-    render () {
+    render() {
         return (
-            <video id="background-video" autoPlay loop muted>
-                <source src={this.state.videoURL} type="video/mp4" />
-                <source src={this.state.videoURL} type="video/ogg" />
-                Your browser does not support the video tag.
-            </video>
+            <div className="content">
+                <video id="background-video" autoPlay loop muted>
+                    <source src={this.state.videoURL} type="video/mp4" />
+                    <source src={this.state.videoURL} type="video/ogg" />
+                </video>
+            </div>
         )
     }
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { InputElement } from "../../components/InputElement";
 import API from "../../utils/API";
+import "./login.css"
 
 
 class Login extends React.Component {
@@ -47,38 +48,30 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <h2>Login Form</h2>
-
-                        <form className="login">
-                            <InputElement
-                                value={this.state.email}
-                                onChange={this.handleInputChange}
-                                name="email"
-                                placeholder="Email"
-                                label="Email Address"
-                                type="email" />
-                            <InputElement
-                                value={this.state.password}
-                                onChange={this.handleInputChange}
-                                name="password"
-                                placeholder="Enter Password"
-                                label="Password"
-                                type="password" />
-                            <button
-                                onClick={this.handleFormSubmit}
-                                className="btn btn-default"
-                                disabled={!(this.state.email && this.state.password)}>Login</button>
-                        </form>
-
-                        <br />
-                        <p>Or sign up <a href="/signup">here</a></p>
-                    </div>
+            <div className="login2">
+                <div className="container text-center loginForm">
+                            <form className="login">
+                                <InputElement
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange}
+                                    name="email"
+                                    placeholder="Email"
+                                    label="Email Address"
+                                    type="email" />
+                                <InputElement
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                    name="password"
+                                    placeholder="Enter Password"
+                                    label="Password"
+                                    type="password" />
+                                <button
+                                    onClick={this.handleFormSubmit}
+                                    className="btn btn-primary"
+                                    disabled={!(this.state.email && this.state.password)}>Login</button>
+                            </form>
                 </div>
             </div>
-
         )
     }
 }
