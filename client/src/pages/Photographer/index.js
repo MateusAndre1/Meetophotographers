@@ -53,9 +53,9 @@ class Photographer extends Component {
             .then(res => {
                 // console.log(res.data);
                 let data = res.data;
-                let newgallerys = [];
+                let newGallerys = [];
                 this.setState({
-                    gallerys: newgallerys
+                    gallerys: newGallerys
                 })
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].isProfile === true) {
@@ -68,10 +68,10 @@ class Photographer extends Component {
                         })
                     } else {
                         let result2 = data[i]
-                        newgallerys.push(result2)
+                        newGallerys.push(result2)
                     }
                 }
-                // console.log(newgallerys);
+                // console.log(newGallerys);
             })
             .catch(err => console.log(err));
     };

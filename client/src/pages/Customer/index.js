@@ -8,7 +8,9 @@ class Customer extends React.Component {
 
         this.state = {
             firstName: "",
-            specialty: ""
+            specialty: "",
+            graphersProfile: [],
+            graphersGallery: []
         };
     }
 
@@ -33,12 +35,26 @@ class Customer extends React.Component {
     loadGraphers = () => {
         API.graphersCall({})
             .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err);
+                let data = res.data;
+                console.log(data[0].Images[0].isProfile);
                 
+                let galleryDisplay = [];
+                let profileDisplay = [];
+                this.setState({
+                    graphersProfile: profileDisplay,
+                    graphersGallery: galleryDisplay
+                })
+                for (let i = 0; i < data.length; i++) {
+                    if (data[0][i].Images.isProfile === true) {
+                        
+                        let result = data[i].Images[i];
+                        console.log(result);
+                        profileDisplay.push(result)
+                    } 
+                }
+                console.log(profileDisplay);
             })
+            .catch(err => console.log(err));
     }
     render() {
         return (
