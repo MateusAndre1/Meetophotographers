@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import GraphersCard from "../../components/GraphersCard";
+import GraphersCardGallery from "../../components/GraphersCardGallery";
 
 class Customer extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class Customer extends React.Component {
     loadUserData = () => {
         API.grabUser()
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     firstName: res.data.firstName
                 })
@@ -40,51 +41,78 @@ class Customer extends React.Component {
                 // console.log(data);
 
                 let totalDisplay = [];
-                totalDisplay.push(data)
-                // console.log(totalDisplay);
-                
-                let galleryDisplay = [];
-                let profileDisplay = [];
+                for (let i = 0; i < data.length; i++) {
+                    // console.log(data[i]);
+                    if (data[i].isReady) {
+                        // console.log(data[i]);
+                        let ready = data[i];
+                        totalDisplay.push(ready)
+                    }
+                }
                 this.setState({
-                    graphersProfile: profileDisplay,
-                    graphersGallery: galleryDisplay,
                     graphersTotal: totalDisplay
                 })
-                for (let i = 0; i < totalDisplay.length; i++) {
-                    // console.log(totalDisplay[i]);
-                    
-                    let childArray = totalDisplay[i]
+                console.log(totalDisplay);
+                return totalDisplay;
+            }).then(res => {
+                // console.log(res);
+
+                let galleryDisplay = [];
+                let profileDisplay = [];
+
+
+                for (let i = 0; i < res.length; i++) {
+                    // console.log(res[i].Images);
+                    let childArray = res[i].Images;
+
                     for (let j = 0; j < childArray.length; j++) {
                         // console.log(childArray[j]);
-                        let newChild = childArray[j].Images
-                        for (let l = 0; l < newChild.length; l++) {
-                            console.log(newChild[l]);
-                            if (newChild[l].isProfile === false) {
-                                let res = newChild[l];
-                                galleryDisplay.push(res)
-                            }
+                        if (childArray[j].isProfile) {
+                            let profileRes = childArray[j];
+                            profileDisplay.push(profileRes)
+                        } else {
+                            let galleryRes = childArray[j];
+                            galleryDisplay.push(galleryRes)
                         }
-                        if (childArray[j].Images[i].isProfile) {
-                            let result2 = childArray[j].Images[i];
-                            profileDisplay.push(result2);
-                        }
-                        
                     }
-                    
-                    
                 }
-
+                this.setState({
+                    graphersProfile: profileDisplay
+                })
                 console.log(profileDisplay);
                 console.log(galleryDisplay);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                if (err) throw err
+            });
+
+
     }
     render() {
         return (
             <div className="customer">
                 <div className="container mt-5">
                     Welcome to the Customer page {this.state.firstName}
-                    <GraphersCard />
+                    {this.state.graphersTotal.map(profile => {
+                        return <GraphersCard
+                            key={profile.id}
+                            name={`${profile.firstName} ${profile.lastName}`}
+                            specialty={profile.specialty}
+                            about={profile.about}
+                            profileImg={profile.Images.map(pic => {
+                                if (pic.isProfile) {
+                                    return pic.binImage
+                                }
+                            })}>
+                            {profile.Images.map(gallery => {
+                                if (!gallery.isProfile) {
+                                    return <GraphersCardGallery
+                                        galleryImg={gallery.binImage}
+                                    />
+                                }
+                            })}
+                        </GraphersCard>
+                    })}
                 </div>
             </div>
         )
