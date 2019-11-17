@@ -13,7 +13,7 @@ export default function GalleryDisplay(props) {
               <img src={props.img} className="img-fluid gallery" alt="skills" />
             </a>
             <div className="p-2 remove3">
-              <button onClick={() => props.deletegalleryImage(props.id)} value={props.id} className="btn-sml deleteBtn3">Delete</button>
+              <button onClick={() => props.deletegalleryImage(props.id)} value={props.id} className="btn deleteBtn3"><i class="fas fa-thumbtack"></i></button>
             </div>
           </div>
         </div>

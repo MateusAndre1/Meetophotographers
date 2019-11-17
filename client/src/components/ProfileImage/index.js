@@ -9,9 +9,11 @@ export default function ProfileImage(props) {
         <>
             <div className="card">
                 <div className="img-container">
-                    <img src={props.src} maxheight="300px" className="img-fluid" alt="logo" />
+                    <div className="profile-pic">
+                    <img src={props.src} className="img-fluid profile" alt="logo" />
+                    </div>
                     <div className="p-2 remove">
-                        <button onClick={props.onClick} className="btn-sml deleteBtn">Delete</button>
+                        <button onClick={props.onClick} className="btn-sml deleteBtn3"><i class="fas fa-thumbtack"></i></button>
                     </div>
                 </div>
             </div>
