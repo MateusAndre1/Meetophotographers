@@ -4,10 +4,17 @@
     border-radius: .5rem;
     min-height: 400px;
     color: white;
+    box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
 }
 .filetypes {
     font-size: 12px;
 }
 .hr {
     border-bottom: 2px solid white;
+}
+.photographer-page {
+    padding: 20px;
+    margin: 50px 0 75px 0;
+    background-color: rgba(65, 64, 64, 0.801);
+    border-radius: .5rem;
 }

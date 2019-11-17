@@ -11,16 +11,17 @@ const AuthButton = withRouter(({ history }) => (
           <i className="fas fa-camera camera"></i>
         </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a className="dropdown-item" href="/book">All Profiles</a>
           <button onClick={() => {
             Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
-          }} className="btn ml-3">Sign out</button>
+          }} className="btn ml-3 mt-3">Sign out</button>
         </div>
       </div>
     </>
   ) : (
       <>
-        <li><Link to="/login"><span className="color">Login Here</span></Link></li>
-        <li><Link to="/signup"><span className="color">SignUp Here</span></Link></li>
+        <li><Link to="/login"><span className="color mr-4">Login</span></Link></li>
+        <li><Link to="/signup"><span className="color">SignUp</span></Link></li>
       </>
     )
 ));

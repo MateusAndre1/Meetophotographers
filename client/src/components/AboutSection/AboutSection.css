@@ -8,16 +8,24 @@
     margin-top: 35px;
     background-color: #2978ffb9;
     padding: 20px;
-    border-radius: .5rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
 }
 .aboutSection {
     min-height: 100px;
 }
 .wrapper2 {
-    background-color: #ebc20bb9;
+    background-color: #646462b9;
+    color: white;
     padding: 20px;
-    border-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
 }
 .hr2 {
     border-bottom: 2px solid #2978fff6
+}
+.about-ready {
+    font-size: 14px;
 }

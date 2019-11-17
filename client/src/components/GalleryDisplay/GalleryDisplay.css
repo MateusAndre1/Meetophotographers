@@ -1,3 +1,23 @@
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+@-webkit-keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
 .card3 {
     position: relative;
     max-width: 600px;
@@ -6,29 +26,38 @@
     margin: 15px 0px 20px 0px;
 }
 
-.card3 > .gallery {
+.card3>.gallery {
     max-height: 300px;
     overflow: hidden;
     text-align: center;
 }
+
 .gallery {
     max-height: 300px;
 }
 
-.img-container4 > .remove3 {
+.img-container4>.remove3 {
     position: absolute;
-    bottom: 0px;
-    left: 5px;
+    top: 0px;
+    left: 7px;
     cursor: pointer;
 }
 
+.remove3 {
+    transform: rotate(35deg);
+}
+
+
 .deleteBtn3:hover {
-    background-color: #d50000;
+    animation: bounce 1s infinite alternate;
+    -webkit-animation: bounce 1s infinite alternate;
+    color: red;
 }
 
 .deleteBtn3 {
     border: none;
     border-radius: .5rem;
-    background-color: rgba(8, 8, 8, 0.692);
+    background-color: rgba(8, 8, 8, 0);
     color: white;
+    font-size: 20px;
 }

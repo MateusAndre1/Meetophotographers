@@ -101,7 +101,7 @@ export default class AboutSection extends Component {
       <>
         {this.state.isEdit ? (
 
-          <Col size="md-6">
+          <Col size="md-8">
             <div className="wrapper">
               <h2 className="mb-4 specialtySection">Specialty: {this.state.grapherSpecialty}</h2>
               <hr className="hr2" />
@@ -111,16 +111,17 @@ export default class AboutSection extends Component {
               </div>
             </div>
             {this.state.isReady ? (
-              <div className="wrapper2">
-                <div>Would you like to deactive your profile from being viewed?</div>
+              <div className="wrapper2 text-center">
+                <p className="mb-1 about-ready">Would you like to deactive your profile from being viewed?</p>
                 <div className="text-center">
                   <button className="btn-small btn-danger edit" onClick={this.dontDeploy}>Yes</button>
                 </div>
               </div>
             ) : (
-                <div className="wrapper2">
+                <div className="wrapper2 text-center">
                   <Col size="sm-12">
-                  <div>If you are ready with your profile, go ahead and deploy it here (dont forget to add some photos if you haven't done so yet!)</div>
+                  <p className="mb-1 about-ready">If you are ready with your profile, go ahead and deploy it here</p>
+                  <p className="mb-1 about-ready">(don't forget to add some photos if you haven't done so yet!)</p>
                   </Col>
                   <div className="text-center">
                     <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy!</button>
