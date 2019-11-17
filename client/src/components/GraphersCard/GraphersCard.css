@@ -5,3 +5,6 @@
     box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
     font-family: 'Cardo', serif;
 }
+.profilePic {
+    max-height: 300px;
+}

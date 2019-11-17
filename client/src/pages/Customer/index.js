@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import GraphersCard from "../../components/GraphersCard";
+import GraphersCardGallery from "../../components/GraphersCardGallery";
 
 class Customer extends React.Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class Customer extends React.Component {
 
         this.state = {
             firstName: "",
-            specialty: ""
+            specialty: "",
+            graphersTotal: []
         };
     }
 
@@ -20,7 +22,7 @@ class Customer extends React.Component {
     loadUserData = () => {
         API.grabUser()
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     firstName: res.data.firstName
                 })
@@ -33,19 +35,55 @@ class Customer extends React.Component {
     loadGraphers = () => {
         API.graphersCall({})
             .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err);
-                
-            })
+                let data = res.data;
+                // console.log(data);
+
+                let totalDisplay = [];
+                for (let i = 0; i < data.length; i++) {
+                    // console.log(data[i]);
+                    if (data[i].isReady) {
+                        // console.log(data[i]);
+                        let ready = data[i];
+                        totalDisplay.push(ready)
+                    }
+                }
+                this.setState({
+                    graphersTotal: totalDisplay
+                })
+                console.log(totalDisplay);
+                return totalDisplay;
+            }).catch(err => {
+                if (err) throw err
+            });
+
+
     }
     render() {
         return (
             <div className="customer">
                 <div className="container mt-5">
                     Welcome to the Customer page {this.state.firstName}
-                    <GraphersCard />
+                    {this.state.graphersTotal.map(profile => {
+                        return <GraphersCard
+                            key={profile.id}
+                            name={`${profile.firstName} ${profile.lastName}`}
+                            specialty={profile.specialty}
+                            about={profile.about}
+                            profileImg={profile.Images.filter(pic => {
+                                return pic.isProfile
+                            }).map(pic => {
+                                return pic.binImage
+                            })}>
+                            {profile.Images.filter(gallery => {
+                                return !gallery.isProfile
+                            }).map(gallery => {
+                                return <GraphersCardGallery
+                                        key={gallery.id}
+                                        galleryImg={gallery.binImage}
+                                    />
+                            })}
+                        </GraphersCard>
+                    })}
                 </div>
             </div>
         )
