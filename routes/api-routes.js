@@ -87,6 +87,22 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/graphers", (req, res) => {
+    console.log(req.body);
+    
+    db.User.findAll({
+      include: [
+        {model: db.Image, include: [db.Photographer]}
+      ]
+      })
+      .then(function (data) {
+
+      return res.json(data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  });
+
   app.put("/api/photographers/update", (req, res) => {
 
     console.log(req.body);

@@ -13,22 +13,40 @@ class Customer extends React.Component {
     }
 
     async componentDidMount() {
-        API.grabUser()
-        .then(res => {
-            this.setState({
-                firstName: res.data.firstName
-            })
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        this.loadUserData();
+        this.loadGraphers();
     }
 
+    loadUserData = () => {
+        API.grabUser()
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    firstName: res.data.firstName
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    loadGraphers = () => {
+        API.graphersCall({})
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err);
+                
+            })
+    }
     render() {
         return (
-            <div className="container customer">
-                Welcome to the Customer page {this.state.firstName}
-                <GraphersCard />
+            <div className="customer">
+                <div className="container mt-5">
+                    Welcome to the Customer page {this.state.firstName}
+                    <GraphersCard />
+                </div>
             </div>
         )
     }
