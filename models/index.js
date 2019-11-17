@@ -33,13 +33,4 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// db.User.belongsToMany(db.Photographer, { through: 'UserId'});
-// db.Photographer.belongsToMany(db.User, { through: 'UserId'});
-
-// db.User.belongsToMany(db.Customer, { through: 'CustomerId'});
-// db.Customer.belongsToMany(db.User, { through: 'CustomerId'});
-
-// db.Image.belongsToMany(db.Photographer, { through: 'PhotographerId'});
-// db.Photographer.belongsToMany(db.Image, { through: 'PhotographerId'});
-
 module.exports = db;

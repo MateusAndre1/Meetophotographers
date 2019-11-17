@@ -142,68 +142,101 @@ class Photographer extends Component {
 
         return (
             <Container>
-                <Row>
-                    <Col size="md-6">
-                        <h2>Profile Picture</h2>
-                        {
-                            this.state.image ? (
-                                <ProfileImage src={this.state.image} onClick={this.deleteProfileImage} />
-                            ) : (
-                                    <ProfileImageHldr />
-                                )
-                        }
-                    </Col>
-                    {
-                        this.state.grapherSpecialty ? (
-                            <AboutSection />
-                        ) : (
+                {
+                    this.state.grapherSpecialty ? (
+                        <>
+                            <Row>
                                 <Col size="md-6">
-                                    <h2>What is your Specialty</h2>
-                                    <form>
-                                        <InputElement
-                                            value={this.state.specialty}
-                                            onChange={this.handleInputChange}
-                                            name="specialty"
-                                            placeholder="Wedding"
-                                            label="Specialty"
-                                            type="text" />
-                                        <InputElement2
-                                            value={this.state.about}
-                                            onChange={this.handleInputChange}
-                                            name="about"
-                                            placeholder="Tell us about yourself, you can include any other sub specialties here as well."
-                                            label="About Section"
-                                            type="text" />
-                                        <div className="text-right">
-                                            <button
-                                                onClick={this.handleFormSubmit}
-                                                className="btn btn-primary"
-                                                disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
-                                        </div>
-                                    </form>
+                                    <h2>Profile Picture</h2>
+                                    {
+                                        this.state.image ? (
+                                            <ProfileImage src={this.state.image} onClick={this.deleteProfileImage} />
+                                        ) : (
+                                                <ProfileImageHldr />
+                                            )
+                                    }
                                 </Col>
-                            )
-                    }
+                                {
+                                    this.state.grapherSpecialty ? (
+                                        <AboutSection />
+                                    ) : (
+                                            <Col size="md-6">
+                                                <h2>What is your Specialty</h2>
+                                                <form>
+                                                    <InputElement
+                                                        value={this.state.specialty}
+                                                        onChange={this.handleInputChange}
+                                                        name="specialty"
+                                                        placeholder="Wedding"
+                                                        label="Specialty"
+                                                        type="text" />
+                                                    <InputElement2
+                                                        value={this.state.about}
+                                                        onChange={this.handleInputChange}
+                                                        name="about"
+                                                        placeholder="Tell us about yourself, you can include any other sub specialties here as well."
+                                                        label="About Section"
+                                                        type="text" />
+                                                    <div className="text-right">
+                                                        <button
+                                                            onClick={this.handleFormSubmit}
+                                                            className="btn btn-primary"
+                                                            disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                                    </div>
+                                                </form>
+                                            </Col>
+                                        )
+                                }
 
-                </Row>
-                <div className="mt-5 gallerySection text-center">
-                    <h2>Upload photos to gallery <span className="filetypes">(jpg/jpeg, PNG, or gif only)</span></h2>
-                    <hr className="hr"/>
-                    <Uploader isProfile="false" />
-                    <div>
-                        <Row>
-                            {this.state.gallerys.map(gallery => {
-                                return <GalleryDisplay
-                                    deletegalleryImage={this.deletegalleryImage}
-                                    id={gallery.id}
-                                    value={gallery.id}
-                                    key={gallery.id}
-                                    img={gallery.binImage}
-                                />
-                            })}
-                        </Row>
-                    </div>
-                </div>
+                            </Row>
+                            <div className="mt-5 gallerySection text-center">
+                                <h2>Upload photos to gallery <span className="filetypes">(jpg/jpeg, PNG, or gif only)</span></h2>
+                                <hr className="hr" />
+                                <Uploader isProfile="false" />
+                                <div>
+                                    <Row>
+                                        {this.state.gallerys.map(gallery => {
+                                            return <GalleryDisplay
+                                                deletegalleryImage={this.deletegalleryImage}
+                                                id={gallery.id}
+                                                value={gallery.id}
+                                                key={gallery.id}
+                                                img={gallery.binImage}
+                                            />
+                                        })}
+                                    </Row>
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                            <Col size="md-6">
+                                <h2>First tell us a little about yourself</h2>
+                                <form>
+                                    <InputElement
+                                        value={this.state.specialty}
+                                        onChange={this.handleInputChange}
+                                        name="specialty"
+                                        placeholder="Wedding"
+                                        label="Main Specialty"
+                                        type="text" />
+                                    <InputElement2
+                                        value={this.state.about}
+                                        onChange={this.handleInputChange}
+                                        name="about"
+                                        placeholder="Tell us about yourself, you can include any other sub specialties here as well."
+                                        label="About Section"
+                                        type="text" />
+                                    <div className="text-right">
+                                        <button
+                                            onClick={this.handleFormSubmit}
+                                            className="btn btn-primary"
+                                            disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                    </div>
+                                </form>
+                            </Col>
+                        )
+                }
+
             </Container >
         )
     }
