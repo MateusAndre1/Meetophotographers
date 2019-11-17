@@ -22,11 +22,15 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
   Photographer.associate = function (models) {
+    Photographer.hasMany(models.Image, {
+      onDelete: "cascade"
+    });
     Photographer.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
+
   };
   return Photographer;
 };

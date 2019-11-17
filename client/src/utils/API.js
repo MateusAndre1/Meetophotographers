@@ -32,5 +32,8 @@ export default {
   destroyProfileImage: function (userData) {
     console.log(userData);
     return axios.delete("/api/delete-image/" + userData);
+  },
+  graphersCall: function (userData) {
+    return axios.post("/api/graphers", userData);
   }
 };

@@ -87,6 +87,38 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/graphers", (req, res) => {
+    console.log(req.body);
+    
+    db.Photographer.findAll({
+      include: [
+        db.Image
+      ]
+      })
+      .then(function (data) {
+
+      return res.json(data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  });
+
+  // app.post("/api/graphers", (req, res) => {
+  //   console.log(req.body);
+    
+  //   db.User.findAll({
+  //     include: [
+  //       {model: db.Image, include: [db.Photographer]}
+  //     ]
+  //     })
+  //     .then(function (data) {
+
+  //     return res.json(data);
+  //   }).catch(function (error) {
+  //     console.log(error);
+  //   });
+  // });
+
   app.put("/api/photographers/update", (req, res) => {
 
     console.log(req.body);
@@ -113,7 +145,8 @@ module.exports = function (app) {
       profileImage: req.body.profileImage,
       binImage: req.body.binImage,
       UserId: req.user.id,
-      isProfile: req.body.isProfile
+      isProfile: req.body.isProfile,
+      PhotographerId: req.user.id
     }).then(function () {
       return res;
     })

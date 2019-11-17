@@ -104,6 +104,7 @@ export default class AboutSection extends Component {
           <Col size="md-6">
             <div className="wrapper">
               <h2 className="mb-4 specialtySection">Specialty: {this.state.grapherSpecialty}</h2>
+              <hr className="hr2" />
               <h5 className="aboutSection">{this.state.grapherAbout}</h5>
               <div className="text-right mt-4">
                 <button className="btn-small btn-danger edit" onClick={this.editAbout}>Edit</button>
