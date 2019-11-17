@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Row } from "../Grid";
+import GraphersCardGallery from "../GraphersCardGallery"
 import "./GraphersCard.css"
 
 export default function GraphersCard(props) {
@@ -21,11 +22,9 @@ export default function GraphersCard(props) {
       </Row>
       <div className="mt-5">
         <Row>
-          <Col size="md-4">
-            <div>
-              <img src={props.galleryImg} className="img-fluid galary" alt="skills" />
-            </div>
-          </Col>
+          <GraphersCardGallery
+            galleryImg={props.galleryImage}
+          />
         </Row>
       </div>
     </div>

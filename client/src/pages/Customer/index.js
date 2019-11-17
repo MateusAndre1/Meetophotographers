@@ -10,7 +10,8 @@ class Customer extends React.Component {
             firstName: "",
             specialty: "",
             graphersProfile: [],
-            graphersGallery: []
+            graphersGallery: [],
+            graphersTotal: []
         };
     }
 
@@ -36,23 +37,45 @@ class Customer extends React.Component {
         API.graphersCall({})
             .then(res => {
                 let data = res.data;
-                console.log(data[0].Images[0].isProfile);
+                // console.log(data);
+
+                let totalDisplay = [];
+                totalDisplay.push(data)
+                // console.log(totalDisplay);
                 
                 let galleryDisplay = [];
                 let profileDisplay = [];
                 this.setState({
                     graphersProfile: profileDisplay,
-                    graphersGallery: galleryDisplay
+                    graphersGallery: galleryDisplay,
+                    graphersTotal: totalDisplay
                 })
-                for (let i = 0; i < data.length; i++) {
-                    if (data[0][i].Images.isProfile === true) {
+                for (let i = 0; i < totalDisplay.length; i++) {
+                    // console.log(totalDisplay[i]);
+                    
+                    let childArray = totalDisplay[i]
+                    for (let j = 0; j < childArray.length; j++) {
+                        // console.log(childArray[j]);
+                        let newChild = childArray[j].Images
+                        for (let l = 0; l < newChild.length; l++) {
+                            console.log(newChild[l]);
+                            if (newChild[l].isProfile === false) {
+                                let res = newChild[l];
+                                galleryDisplay.push(res)
+                            }
+                        }
+                        if (childArray[j].Images[i].isProfile) {
+                            let result2 = childArray[j].Images[i];
+                            profileDisplay.push(result2);
+                        }
                         
-                        let result = data[i].Images[i];
-                        console.log(result);
-                        profileDisplay.push(result)
-                    } 
+                    }
+                    
+                    
                 }
+
                 console.log(profileDisplay);
+                console.log(galleryDisplay);
             })
             .catch(err => console.log(err));
     }
