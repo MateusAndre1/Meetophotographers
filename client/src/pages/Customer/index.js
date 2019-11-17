@@ -10,8 +10,6 @@ class Customer extends React.Component {
         this.state = {
             firstName: "",
             specialty: "",
-            graphersProfile: [],
-            graphersGallery: [],
             graphersTotal: []
         };
     }
@@ -54,35 +52,7 @@ class Customer extends React.Component {
                 })
                 console.log(totalDisplay);
                 return totalDisplay;
-            }).then(res => {
-                // console.log(res);
-
-                let galleryDisplay = [];
-                let profileDisplay = [];
-
-
-                for (let i = 0; i < res.length; i++) {
-                    // console.log(res[i].Images);
-                    let childArray = res[i].Images;
-
-                    for (let j = 0; j < childArray.length; j++) {
-                        // console.log(childArray[j]);
-                        if (childArray[j].isProfile) {
-                            let profileRes = childArray[j];
-                            profileDisplay.push(profileRes)
-                        } else {
-                            let galleryRes = childArray[j];
-                            galleryDisplay.push(galleryRes)
-                        }
-                    }
-                }
-                this.setState({
-                    graphersProfile: profileDisplay
-                })
-                console.log(profileDisplay);
-                console.log(galleryDisplay);
-            })
-            .catch(err => {
+            }).catch(err => {
                 if (err) throw err
             });
 
@@ -99,17 +69,18 @@ class Customer extends React.Component {
                             name={`${profile.firstName} ${profile.lastName}`}
                             specialty={profile.specialty}
                             about={profile.about}
-                            profileImg={profile.Images.map(pic => {
-                                if (pic.isProfile) {
-                                    return pic.binImage
-                                }
+                            profileImg={profile.Images.filter(pic => {
+                                return pic.isProfile
+                            }).map(pic => {
+                                return pic.binImage
                             })}>
-                            {profile.Images.map(gallery => {
-                                if (!gallery.isProfile) {
-                                    return <GraphersCardGallery
+                            {profile.Images.filter(gallery => {
+                                return !gallery.isProfile
+                            }).map(gallery => {
+                                return <GraphersCardGallery
+                                        key={gallery.id}
                                         galleryImg={gallery.binImage}
                                     />
-                                }
                             })}
                         </GraphersCard>
                     })}
