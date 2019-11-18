@@ -142,10 +142,11 @@ class Photographer extends Component {
 
         return (
             <Container>
-                <div className="photographer-page">
-                    {
-                        this.state.grapherSpecialty ? (
-                            <>
+
+                {
+                    this.state.grapherSpecialty ? (
+                        <>
+                            <div className="photographer-page">
                                 <Row>
                                     <Col size="md-4">
                                         <h2 className="m-0">Profile Picture</h2>
@@ -177,37 +178,38 @@ class Photographer extends Component {
                                         </Row>
                                     </div>
                                 </div>
-                            </>
-                        ) : (
-                                <div className="container text-center loginForm2">
-                                    <h2>First tell us a little about yourself</h2>
-                                    <hr />
-                                    <form>
-                                        <InputElement
-                                            value={this.state.specialty}
-                                            onChange={this.handleInputChange}
-                                            name="specialty"
-                                            placeholder="Wedding"
-                                            label="Main Specialty"
-                                            type="text" />
-                                        <InputElement2
-                                            value={this.state.about}
-                                            onChange={this.handleInputChange}
-                                            name="about"
-                                            placeholder="Tell us about yourself, you can include any other sub specialties here as well."
-                                            label="About Section"
-                                            type="text" />
-                                        <div className="text-right">
-                                            <button
-                                                onClick={this.handleFormSubmit}
-                                                className="btn btn-primary"
-                                                disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            )
-                    }
-                </div>
+                            </div>
+                        </>
+                    ) : (
+                            <div className="container text-center loginForm2">
+                                <h2>First tell us a little about yourself</h2>
+                                <hr />
+                                <form>
+                                    <InputElement
+                                        value={this.state.specialty}
+                                        onChange={this.handleInputChange}
+                                        name="specialty"
+                                        placeholder="Wedding"
+                                        label="Main Specialty"
+                                        type="text" />
+                                    <InputElement2
+                                        value={this.state.about}
+                                        onChange={this.handleInputChange}
+                                        name="about"
+                                        placeholder="Tell us about yourself, you can include any other sub specialties here as well."
+                                        label="About Section"
+                                        type="text" />
+                                    <div className="text-right">
+                                        <button
+                                            onClick={this.handleFormSubmit}
+                                            className="btn btn-primary"
+                                            disabled={!(this.state.specialty && this.state.about)} type="reset">Add</button>
+                                    </div>
+                                </form>
+                            </div>
+                        )
+                }
+
             </Container >
         )
     }
