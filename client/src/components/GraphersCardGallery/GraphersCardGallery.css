@@ -1,0 +1,9 @@
+.galleryDisplayFront {
+    max-height: 300px;
+    
+}
+.gallery2 {
+    max-height: 250px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
+}
