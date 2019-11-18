@@ -10,7 +10,7 @@ export default function GraphersCard(props) {
       <Row>
         <Col size="md-4">
           <div className="">
-            <img src={props.profileImg} className="img-fluid profilePic galary" alt="skills" />
+            <img src={props.profileImg} className="img-fluid profilePic" alt="skills" />
           </div>
         </Col>
         <Col size="md-8">
