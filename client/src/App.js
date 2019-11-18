@@ -33,7 +33,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ authenticated: Auth.isUserAuthenticated() }, function () {
-      console.log(this.state.authenticated)
+      // console.log(this.state.authenticated)
     });
   }
 
