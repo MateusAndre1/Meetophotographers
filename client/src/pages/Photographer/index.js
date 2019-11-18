@@ -38,7 +38,7 @@ class Photographer extends Component {
     loadUserData = () => {
         API.grabUser()
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     firstName: res.data.firstName
                 })
@@ -79,7 +79,7 @@ class Photographer extends Component {
     loadGrapher = () => {
         API.grabGrapher({})
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 let data = res.data;
                 this.setState({
                     grapherSpecialty: data[0].specialty,
@@ -104,7 +104,7 @@ class Photographer extends Component {
         API.destroyProfileImage(
             this.state.imageId
         ).then((res) => {
-            console.log(res);
+            // console.log(res);
             return res;
         }).then(() => {
             window.location.reload();

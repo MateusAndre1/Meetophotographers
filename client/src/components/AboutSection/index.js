@@ -30,7 +30,7 @@ export default class AboutSection extends Component {
       about: this.state.about
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         return window.location.reload();
       })
       .catch(err => console.log(err));
@@ -39,7 +39,7 @@ export default class AboutSection extends Component {
   loadGrapher = () => {
     API.grabGrapher({})
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         let data = res.data;
         this.setState({
           grapherSpecialty: data[0].specialty,

@@ -13,7 +13,7 @@ export default function ProfileImage(props) {
                     <img src={props.src} className="img-fluid profile" alt="logo" />
                     </div>
                     <div className="p-2 remove">
-                        <button onClick={props.onClick} className="btn-sml deleteBtn3"><i class="fas fa-thumbtack"></i></button>
+                        <button onClick={props.onClick} className="btn-sml deleteBtn3"><i className="fas fa-thumbtack"></i></button>
                     </div>
                 </div>
             </div>
