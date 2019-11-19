@@ -12,6 +12,7 @@ const AuthButton = withRouter(({ history }) => (
         </button>
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a className="dropdown-item" href="/book">All Profiles</a>
+        <a className="dropdown-item" href="/interactive">Camera Mode</a>
           <button onClick={() => {
             Auth.deauthenticateUser(() => history.push('/')); window.location.href = "/";
           }} className="btn ml-3 mt-3">Sign out</button>
@@ -20,8 +21,16 @@ const AuthButton = withRouter(({ history }) => (
     </>
   ) : (
       <>
-        <li><Link to="/login"><span className="color mr-4">Login</span></Link></li>
-        <li><Link to="/signup"><span className="color">SignUp</span></Link></li>
+      <div className="dropdown">
+        <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i className="fas fa-camera camera"></i>
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a className="dropdown-item" href="/login">Login</a>
+        <a className="dropdown-item" href="/signup">Signup</a>
+        <a className="dropdown-item" href="/interactive">Camera Mode</a>
+        </div>
+      </div>
       </>
     )
 ));

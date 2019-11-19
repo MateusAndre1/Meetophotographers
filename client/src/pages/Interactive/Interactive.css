@@ -1,0 +1,111 @@
+.studioBg {
+    background-image: url("/assets/images/studioshoot.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100%;
+}
+.camera2 {
+    width: 500px;
+}
+.tripod {
+    max-height: 400px;
+}
+.outerDiv {
+    min-height: 100vh;
+}
+.innerImage {
+    position: relative;
+}
+.space {
+    min-height: 250px;
+}
+.innerImage > .outerImage2 {
+    position: absolute;
+}
+.innerImage > .outerImageDiv {
+    position: absolute;
+    bottom: 40px;
+    left: 39%;
+}
+.innerImage > .outerImage3 {
+    position: absolute;
+}
+.innerImage > .outerImage3Div {
+    position: absolute;
+    left: 45.8%;
+    top: 55px;
+}
+.innerImage > .outerImageDiv{
+    overflow: hidden;
+}
+.innerImage > .outerImage3Div{
+    overflow: hidden;
+}
+.innerImage > .onSwitch {
+    position: absolute;
+    top: 75px;
+    left: 53.3%;
+}
+.innerImage > .onFlash {
+    position: absolute;
+    top: 80px;
+    right: 38.3%;
+}
+.innerImage > .sideSwitch {
+    position: absolute;
+    bottom: 167px;
+    left: 54.3%;
+}
+.innerImage > .sideSwitch2 {
+    position: absolute;
+    bottom: 167px;
+    left: 57.3%;
+}
+
+.onSwitch {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.onFlash {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.sideSwitch {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.sideSwitch2 {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+.outerImage {
+    max-width: 220px;
+}
+.outerImage2 {
+    max-height: 180px;
+    max-width: 300px;
+}
+.outerImageDiv {
+    background-color: black;
+    width: 230px;
+    height: 170px;
+}
+.outerImage3 {
+    max-width: 75px;
+}
+.image3 {
+    max-width: 65px;
+}
+.outerImage3Div {
+    max-width: 54px;
+    height: 39px;
+}
+.bolt {
+    color: rgb(255, 208, 0)
+}
