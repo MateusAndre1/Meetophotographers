@@ -8,7 +8,7 @@ export default class Interactive extends Component {
 
         this.state = {
             images: [],
-            image: "",
+            image: "/assets/images/studioshoot.jpg",
             gallerys: [],
             isOn: false,
             flash: ""
@@ -45,13 +45,11 @@ export default class Interactive extends Component {
                         return res
                     })
                 })
-                let randomIndex = Math.floor(Math.random() * galleryDisplay.length);
-                let randomImage = galleryDisplay[randomIndex]
+                
                 // console.log(randomImage);
                 this.setState({
                     gallerys: totalDisplay,
-                    images: galleryDisplay,
-                    image: randomImage
+                    images: galleryDisplay
                 })
                 // console.log(totalDisplay);
                 // console.log(galleryDisplay);
