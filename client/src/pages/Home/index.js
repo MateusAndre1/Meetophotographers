@@ -29,7 +29,7 @@ class Home extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.email)
+        // console.log(this.state.email)
         if (this.state.password && this.state.email) {
             API.getUser({
                 email: this.state.email,

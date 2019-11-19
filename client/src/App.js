@@ -8,6 +8,7 @@ import Customer from "./pages/Customer";
 import Auth from "./utils/auth.js";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Interactive from "./pages/Interactive";
 import "./App.css"
 
 
@@ -47,6 +48,7 @@ class App extends Component {
               <Route path="/" component={Home} exact />
               <Route path="/login" component={Login} exact />
               <Route path='/signup' component={Signup} exact />
+              <Route path='/interactive' component={Interactive} exact />
               <ProtectedRoute path='/members' component={Member} exact />
               <ProtectedRoute path='/book' component={Customer} exact />
               <Route render={() => <Redirect to="/" />} />
