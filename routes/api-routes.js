@@ -64,6 +64,7 @@ module.exports = function (app) {
       firstName: req.user.firstName,
       lastName: req.user.lastName,
       specialty: req.body.specialty,
+      email: req.user.email,
       about: req.body.about,
       UserId: req.user.id,
       isReady: req.body.isReady

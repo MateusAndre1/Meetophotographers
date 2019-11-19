@@ -14,9 +14,12 @@ export default function GraphersCard(props) {
           </div>
         </Col>
         <Col size="md-8">
-          <h3>Specialty: {props.specialty}</h3>
+          <h3>Specialty: {props.specialty} <img src="/assets/images/fivestar.png" className="stars" alt="stars" /></h3>
           <hr className="hr2" />
-          <p>{props.about}</p>
+          <p className="aboutCardSection">{props.about}</p>
+          <div className="email text-right mr-5">
+          <a href={`mailto:${props.email}`}><i className="far fa-envelope emailSection"></i></a>
+          </div>
         </Col>
       </Row>
       <hr className="hr2" />

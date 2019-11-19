@@ -10,3 +10,17 @@
     max-height: 300px;
     box-shadow: 0 3px 6px rgb(46, 46, 46), 0 3px 6px rgb(68, 67, 67);
 }
+.aboutCardSection {
+    min-height: 200px;
+}
+.emailSection {
+    font-size: 20px;
+    color: white;
+}
+.emailSection:hover {
+    color: blue;
+}
+.stars {
+    float: right;
+    max-width: 130px;
+}

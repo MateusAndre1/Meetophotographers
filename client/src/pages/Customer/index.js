@@ -69,6 +69,7 @@ class Customer extends React.Component {
                             name={`${profile.firstName} ${profile.lastName}`}
                             specialty={profile.specialty}
                             about={profile.about}
+                            email={profile.email}
                             profileImg={profile.Images.filter(pic => {
                                 return pic.isProfile
                             }).map(pic => {
