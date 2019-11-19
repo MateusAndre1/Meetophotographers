@@ -102,7 +102,7 @@ export default class Interactive extends Component {
                                 <div className="onSwitch" onClick={this.turnOn}></div>
                                 <div className="sideSwitch" onClick={this.randify}></div>
                                 <div className="sideSwitch2" onClick={this.randify}></div>
-                                <div className="onFlash" onClick={this.flashOn}><i class="fas fa-bolt bolt"></i></div>
+                                <div className="onFlash" onClick={this.flashOn}><i className="fas fa-bolt bolt"></i></div>
                                 {this.state.isOn ? (
                                     <>
                                         <div className="outerImageDiv">
