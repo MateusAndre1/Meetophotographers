@@ -62,7 +62,7 @@ class Customer extends React.Component {
         return (
             <div className="customer">
                 <div className="container mt-5">
-                    Welcome to the Customer page {this.state.firstName}
+                    <div className="welcome text-center">Welcome to Meetographers, {this.state.firstName}.</div>
                     {this.state.graphersTotal.map(profile => {
                         return <GraphersCard
                             key={profile.id}
