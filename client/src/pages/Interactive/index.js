@@ -10,7 +10,8 @@ export default class Interactive extends Component {
             images: [],
             image: "",
             gallerys: [],
-            isOn: true
+            isOn: false,
+            flash: ""
         };
     }
 
@@ -46,58 +47,74 @@ export default class Interactive extends Component {
                 })
                 let randomIndex = Math.floor(Math.random() * galleryDisplay.length);
                 let randomImage = galleryDisplay[randomIndex]
-                console.log(randomImage);
-
+                // console.log(randomImage);
                 this.setState({
                     gallerys: totalDisplay,
                     images: galleryDisplay,
                     image: randomImage
                 })
-                console.log(totalDisplay);
-                console.log(galleryDisplay);
+                // console.log(totalDisplay);
+                // console.log(galleryDisplay);
                 return totalDisplay;
             }).catch(err => {
                 if (err) throw err
             });
-
-
     }
-
+    randify = e => {
+        e.preventDefault();
+        let newImages = this.state.images;
+        let randomIndex = Math.floor(Math.random() * newImages.length);
+        let randomImage = newImages[randomIndex];
+        this.setState({
+            image: randomImage
+        })
+    }
     turnOn = e => {
         e.preventDefault();
         this.setState(prevState => ({
             isOn: !prevState.isOn
         }))
     }
-
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         });
     };
-
+    flashOn = e => {
+        e.preventDefault();
+        this.setState({
+            flash: "bg-white"
+        })
+            setTimeout(() => {
+                this.setState({
+                    flash: ""
+                })
+            }, 100);
+    }
     render() {
-
         return (
             <>
                 <div className="studioBg">
-                    <div className="outerDiv">
+                    <div className={`outerDiv ${this.state.flash}`}>
                         <div className="space"></div>
                         <div className="innerDiv text-center">
                             <div className="innerImage">
                                 <img src="/assets/images/camera.png" className="img-fluid camera2" alt="camera" />
                                 <div className="onSwitch" onClick={this.turnOn}></div>
-                                <div className="sideSwitch" ></div>
-                                <div className="sideSwitch2" ></div>
+                                <div className="sideSwitch" onClick={this.randify}></div>
+                                <div className="sideSwitch2" onClick={this.randify}></div>
+                                <div className="onFlash" onClick={this.flashOn}><i class="fas fa-bolt bolt"></i></div>
                                 {this.state.isOn ? (
                                     <>
                                         <div className="outerImageDiv">
                                             <img src={this.state.image} className="img-fluid outerImage2" alt="camera" />
                                         </div>
-                                        <a href={this.state.image} className="outerImage3" target="_blank" rel="noopener noreferrer">
-                                            <img src={this.state.image} className="img-fluid camera2" alt="camera" />
-                                        </a>
+                                        <div className="outerImage3Div">
+                                            <a href={this.state.image} className="outerImage3" target="_blank" rel="noopener noreferrer">
+                                                <img src={this.state.image} className="img-fluid image3 camera2" alt="camera" />
+                                            </a>
+                                        </div>
                                     </>
                                 ) : (
                                         <>

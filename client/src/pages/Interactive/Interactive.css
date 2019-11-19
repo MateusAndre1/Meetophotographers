@@ -26,18 +26,32 @@
 }
 .innerImage > .outerImageDiv {
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 39%;
 }
 .innerImage > .outerImage3 {
     position: absolute;
-    left: 46%;
-    top: 58px;
+}
+.innerImage > .outerImage3Div {
+    position: absolute;
+    left: 45.8%;
+    top: 55px;
+}
+.innerImage > .outerImageDiv{
+    overflow: hidden;
+}
+.innerImage > .outerImage3Div{
+    overflow: hidden;
 }
 .innerImage > .onSwitch {
     position: absolute;
     top: 75px;
     left: 53.3%;
+}
+.innerImage > .onFlash {
+    position: absolute;
+    top: 80px;
+    right: 38.3%;
 }
 .innerImage > .sideSwitch {
     position: absolute;
@@ -51,6 +65,11 @@
 }
 
 .onSwitch {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.onFlash {
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -70,14 +89,23 @@
 }
 .outerImage2 {
     max-height: 180px;
-    max-width: 215px;
+    max-width: 300px;
 }
 .outerImageDiv {
     background-color: black;
-    padding: 10px;
     width: 230px;
-    height: 155px;
+    height: 170px;
 }
 .outerImage3 {
-    max-width: 50px;
+    max-width: 75px;
+}
+.image3 {
+    max-width: 65px;
+}
+.outerImage3Div {
+    max-width: 54px;
+    height: 39px;
+}
+.bolt {
+    color: white
 }
