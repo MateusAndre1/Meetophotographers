@@ -11,7 +11,7 @@ export default function Uploader(props) {
 
 
 
-    const handChange = e => {
+    const handleInputChange = e => {
         const file = e.target.files[0];
         if (file) {
             const fileType = file["type"]
@@ -23,7 +23,7 @@ export default function Uploader(props) {
                 setError("Please select an image to upload")
             }
         }
-        
+
     }
 
     const handleUpload = (e) => {
@@ -67,8 +67,10 @@ export default function Uploader(props) {
 
     return (
         <>
-                <input style={{width: "220px"}} type="file" onChange={handChange} />
-                <button onClick={handleUpload}>Upload</button>
+            <label className="fileUpload"> Browse
+            <input style={{ width: "220px" }} type="file" onChange={handleInputChange} />
+            </label>
+            <button onClick={handleUpload} className="btn"><i className="fas fa-cloud-upload-alt uploadBtn"></i></button>
             <div>
                 {progress > 0 ? <progress value={progress} max="100" /> : null}
                 <p style={{ color: "red" }}>{error}</p>

@@ -9,10 +9,38 @@ li {
   flex-direction: column;
 }
 
-.login2, .signup, .customer {
+.login2,
+.signup,
+.customer {
   background-image: url("https://images.pexels.com/photos/1113272/pexels-photo-1113272.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.fileUpload {
+  background-color: #2978ffb9;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+  border-radius: .5rem;
+  max-height: 35px;
+  margin-right: 20px;
+}
+
+.uploadBtn {
+  color: rgba(34, 139, 34, 0.685);
+  font-size: 30px;
+}
+.uploadBtn:hover {
+  color: rgb(34, 139, 34);
+}
+.fileUpload:hover {
+  background-color: rgb(48,106,206);
 }
