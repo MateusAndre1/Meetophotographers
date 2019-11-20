@@ -15,6 +15,7 @@
 .img-container2 > .remove2 {
     position: absolute;
     bottom: 0px;
+    left: 20px;
     cursor: pointer;
 }
 

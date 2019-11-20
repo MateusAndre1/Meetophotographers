@@ -148,7 +148,7 @@ class Photographer extends Component {
                         <>
                             <div className="photographer-page">
                                 <Row>
-                                    <Col size="md-4">
+                                    <Col size="sm-4">
                                         <h2 className="m-0">Profile Picture</h2>
                                         {
                                             this.state.image ? (
