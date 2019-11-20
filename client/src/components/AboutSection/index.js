@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Col } from "../Grid";
 import API from "../../utils/API"
-import { InputElement } from "../InputElement";
 import { InputElement2 } from "../InputElement2";
+import { DropdownInputSpecialty } from "../DropdownInput";
 import "./AboutSection.css";
 
 export default class AboutSection extends Component {
@@ -120,12 +120,12 @@ export default class AboutSection extends Component {
             ) : (
                 <div className="wrapper2 text-center">
                   <Col size="sm-12">
-                  <p className="mb-1 about-ready">If you are ready with your profile, go ahead and deploy it here</p>
-                  <p className="mb-1 about-ready">(don't forget to add some photos if you haven't done so yet!)</p>
+                    <p className="mb-1 about-ready">If you are ready with your profile, go ahead and deploy it here</p>
+                    <p className="mb-1 about-ready">(don't forget to add some photos if you haven't done so yet!)</p>
                   </Col>
                   <div className="text-center">
                     <button className="btn-small btn-success edit" onClick={this.readyDeploy}>Deploy!</button>
-                    </div>
+                  </div>
                 </div>
               )
             }
@@ -133,15 +133,16 @@ export default class AboutSection extends Component {
           </Col>
 
         ) : (
-            <Col size="md-6">
+          
+            <Col size="md-8">
               <h2>Describe yourself</h2>
-              <form>
-                <InputElement
+              <form className="formEdit">
+                <DropdownInputSpecialty
                   value={this.state.specialty}
                   onChange={this.handleInputChange}
                   name="specialty"
-                  placeholder="Wedding"
-                  label="Main Specialty"
+                  placeholder="Choose"
+                  label="Specialty"
                   type="text" />
                 <InputElement2
                   value={this.state.about}
