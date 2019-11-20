@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { InputElement } from "../../components/InputElement";
+import { DropdownInputSpecialty } from "../../components/DropdownInput";
 import { InputElement2 } from "../../components/InputElement2";
 import Uploader from "../../components/Uploader";
 import { Col, Row, Container } from "../../components/Grid";
@@ -185,12 +185,12 @@ class Photographer extends Component {
                                 <h2>First tell us a little about yourself</h2>
                                 <hr />
                                 <form>
-                                    <InputElement
+                                    <DropdownInputSpecialty
                                         value={this.state.specialty}
                                         onChange={this.handleInputChange}
                                         name="specialty"
-                                        placeholder="Wedding"
-                                        label="Main Specialty"
+                                        placeholder="Choose"
+                                        label="Specialty"
                                         type="text" />
                                     <InputElement2
                                         value={this.state.about}

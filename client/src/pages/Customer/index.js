@@ -55,8 +55,6 @@ class Customer extends React.Component {
             }).catch(err => {
                 if (err) throw err
             });
-
-
     }
     render() {
         return (
