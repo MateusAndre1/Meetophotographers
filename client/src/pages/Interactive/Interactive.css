@@ -65,6 +65,7 @@
 }
 
 .onSwitch {
+    background-color: red;
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -75,11 +76,13 @@
     height: 30px;
 }
 .sideSwitch {
+    background-color: red;
     cursor: pointer;
     width: 25px;
     height: 25px;
 }
 .sideSwitch2 {
+    background-color: red;
     cursor: pointer;
     width: 25px;
     height: 25px;
@@ -109,3 +112,49 @@
 .bolt {
     color: rgb(255, 208, 0)
 }
+
+@media screen and (max-width: 1000px) {
+    .innerImage > .outerImage2 {
+        position: absolute;
+    }
+    .innerImage > .outerImageDiv {
+        position: absolute;
+        bottom: 40px;
+        left: 32%;
+    }
+    .innerImage > .outerImage3 {
+        position: absolute;
+    }
+    .innerImage > .outerImage3Div {
+        position: absolute;
+        left: 43%;
+        top: 55px;
+    }
+    .innerImage > .outerImageDiv{
+        overflow: hidden;
+    }
+    .innerImage > .outerImage3Div{
+        overflow: hidden;
+    }
+    .innerImage > .onSwitch {
+        position: absolute;
+        top: 75px;
+        left: 55.3%;
+    }
+    .innerImage > .onFlash {
+        position: absolute;
+        top: 80px;
+        right: 31.3%;
+    }
+    .innerImage > .sideSwitch {
+        position: absolute;
+        bottom: 167px;
+        left: 57.3%;
+    }
+    .innerImage > .sideSwitch2 {
+        position: absolute;
+        bottom: 167px;
+        left: 61.3%;
+    }
+  
+  }
