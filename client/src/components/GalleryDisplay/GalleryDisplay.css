@@ -39,7 +39,7 @@
 .img-container4>.remove3 {
     position: absolute;
     top: 0px;
-    left: 7px;
+    left: 50%;
     cursor: pointer;
 }
 
